@@ -38,7 +38,7 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
     }
 
     public CommonDialog(Context context, String title, String message) {
-        super(context, R.style.CommonDialog);
+        super(context, com.wangxing.code.R.style.CommonDialog);
         mContext = context;
         mTitle = title;
         mMessage = message;
@@ -60,10 +60,10 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
 
     public void init() {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(R.layout.dialog, null);
+        View view = inflater.inflate(com.wangxing.code.R.layout.dialog, null);
         setContentView(view);
 
-        mTitleTv = (TextView) view.findViewById(R.id.tv_dialog_title);
+        mTitleTv = (TextView) view.findViewById(com.wangxing.code.R.id.tv_dialog_title);
         if (!TextUtils.isEmpty(mTitle)) {
             mTitleTv.setText(mTitle);
         } else if (mTitleSpan != null) {
@@ -72,7 +72,7 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
             mTitleTv.setVisibility(View.GONE);
         }
 
-        mMessageTv = (TextView) view.findViewById(R.id.tv_dialog_message);
+        mMessageTv = (TextView) view.findViewById(com.wangxing.code.R.id.tv_dialog_message);
 
         if (!TextUtils.isEmpty(mMessage)) {
             updateMessage(mMessage);
@@ -84,8 +84,8 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
 //            mTitleTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_del_product, 0, 0, 0);
         }
 
-        view.findViewById(R.id.tv_cancel_dialog).setOnClickListener(this);
-        view.findViewById(R.id.tv_sure_dialog).setOnClickListener(this);
+        view.findViewById(com.wangxing.code.R.id.tv_cancel_dialog).setOnClickListener(this);
+        view.findViewById(com.wangxing.code.R.id.tv_sure_dialog).setOnClickListener(this);
     }
 
     public void updateMessage(String message) {
@@ -107,9 +107,9 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == R.id.tv_sure_dialog) {
+        if (id == com.wangxing.code.R.id.tv_sure_dialog) {
             mListener.doConfirm();
-        } else if (id == R.id.tv_cancel_dialog) {
+        } else if (id == com.wangxing.code.R.id.tv_cancel_dialog) {
             mListener.doCancel();
         }
     }

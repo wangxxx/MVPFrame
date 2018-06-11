@@ -29,11 +29,11 @@ public class LoadingDialog {
      * @param cancelable 对话框是否可以取消
      */
     public static Dialog showDialogForLoading(Activity context, String msg, boolean cancelable) {
-        View view = LayoutInflater.from(context).inflate(R.layout.dialog_loading, null);
-        TextView loadingText = (TextView) view.findViewById(R.id.id_tv_loading_dialog_text);
+        View view = LayoutInflater.from(context).inflate(com.wangxing.code.R.layout.dialog_loading, null);
+        TextView loadingText = (TextView) view.findViewById(com.wangxing.code.R.id.id_tv_loading_dialog_text);
         loadingText.setText(msg);
 
-        mLoadingDialog = new Dialog(context, R.style.CustomProgressDialog);
+        mLoadingDialog = new Dialog(context, com.wangxing.code.R.style.CustomProgressDialog);
         mLoadingDialog.setCancelable(cancelable);
         mLoadingDialog.setCanceledOnTouchOutside(false);
         mLoadingDialog.setContentView(view, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
@@ -42,11 +42,11 @@ public class LoadingDialog {
     }
 
     public static Dialog showDialogForLoading(Activity context) {
-        View view = LayoutInflater.from(context).inflate(R.layout.dialog_loading, null);
-        TextView loadingText = (TextView) view.findViewById(R.id.id_tv_loading_dialog_text);
+        View view = LayoutInflater.from(context).inflate(com.wangxing.code.R.layout.dialog_loading, null);
+        TextView loadingText = (TextView) view.findViewById(com.wangxing.code.R.id.id_tv_loading_dialog_text);
         loadingText.setText("加载中...");
 
-        mLoadingDialog = new Dialog(context, R.style.CustomProgressDialog);
+        mLoadingDialog = new Dialog(context,com.wangxing.code. R.style.CustomProgressDialog);
         mLoadingDialog.setCancelable(true);
         mLoadingDialog.setCanceledOnTouchOutside(false);
         mLoadingDialog.setContentView(view, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));

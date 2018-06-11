@@ -34,26 +34,26 @@ public class ToolbarUtil implements View.OnClickListener {
     }
 
     public void init(Activity activity) {
-        mToolbarView = mActivity.findViewById(R.id.frame_toolbar);
-        mLeftTv = (TextView) mToolbarView.findViewById(R.id.tv_toolbar_left);
-        mLeftIv = (ImageView) mToolbarView.findViewById(R.id.ib_toolbar_left);
-        mLeftFl = (FrameLayout) mToolbarView.findViewById(R.id.fl_toolbar_left);
-        mTitleTv = (TextView) mToolbarView.findViewById(R.id.tv_toolbar_title);
-        mRightTv = (TextView) mToolbarView.findViewById(R.id.tv_toolbar_right);
-        mRightIv = (ImageView) mToolbarView.findViewById(R.id.ib_toolbar_right);
-        mRightFl = (FrameLayout) mToolbarView.findViewById(R.id.fl_toolbar_right);
+        mToolbarView = mActivity.findViewById(com.wangxing.code.R.id.frame_toolbar);
+        mLeftTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_left);
+        mLeftIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_left);
+        mLeftFl = (FrameLayout) mToolbarView.findViewById(com.wangxing.code.R.id.fl_toolbar_left);
+        mTitleTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_title);
+        mRightTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_right);
+        mRightIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_right);
+        mRightFl = (FrameLayout) mToolbarView.findViewById(com.wangxing.code.R.id.fl_toolbar_right);
         mLeftFl.setOnClickListener(this);
     }
 
     public void init(View parentView) {
-        mToolbarView = parentView.findViewById(R.id.toolbar);
-        mLeftTv = (TextView) mToolbarView.findViewById(R.id.tv_toolbar_left);
-        mLeftIv = (ImageView) mToolbarView.findViewById(R.id.ib_toolbar_left);
-        mLeftFl = (FrameLayout) mToolbarView.findViewById(R.id.fl_toolbar_left);
-        mTitleTv = (TextView) mToolbarView.findViewById(R.id.tv_toolbar_title);
-        mRightTv = (TextView) mToolbarView.findViewById(R.id.tv_toolbar_right);
-        mRightIv = (ImageView) mToolbarView.findViewById(R.id.ib_toolbar_right);
-        mRightFl = (FrameLayout) mToolbarView.findViewById(R.id.fl_toolbar_right);
+        mToolbarView = parentView.findViewById(com.wangxing.code.R.id.toolbar);
+        mLeftTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_left);
+        mLeftIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_left);
+        mLeftFl = (FrameLayout) mToolbarView.findViewById(com.wangxing.code.R.id.fl_toolbar_left);
+        mTitleTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_title);
+        mRightTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_right);
+        mRightIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_right);
+        mRightFl = (FrameLayout) mToolbarView.findViewById(com.wangxing.code.R.id.fl_toolbar_right);
         mLeftFl.setOnClickListener(this);
     }
 

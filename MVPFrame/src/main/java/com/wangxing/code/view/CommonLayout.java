@@ -27,7 +27,7 @@ public class CommonLayout extends FrameLayout {
     private OnClickListener mOnErrorClickListener;
 
     public static CommonLayout create(Context context, int layoutId) {
-        CommonLayout layout = (CommonLayout) LayoutInflater.from(context).inflate(R.layout.common_layout, null);
+        CommonLayout layout = (CommonLayout) LayoutInflater.from(context).inflate(com.wangxing.code.R.layout.common_layout, null);
         View view = LayoutInflater.from(context).inflate(layoutId, layout, false);
         layout.addView(view);
         layout.setContentView(view);
@@ -35,7 +35,7 @@ public class CommonLayout extends FrameLayout {
     }
 
     public static CommonLayout create(Context context, View view) {
-        CommonLayout layout = (CommonLayout) LayoutInflater.from(context).inflate(R.layout.common_layout, null);
+        CommonLayout layout = (CommonLayout) LayoutInflater.from(context).inflate(com.wangxing.code.R.layout.common_layout, null);
         layout.addView(view);
         layout.setContentView(view);
         return layout;
@@ -76,9 +76,9 @@ public class CommonLayout extends FrameLayout {
 
     private void init() {
         if (mLoadingStub == null) {
-            mLoadingStub = new ViewStub(getContext(), R.layout.common_loading);
-            mErrorStub = new ViewStub(getContext(), R.layout.common_error);
-            mEmptyStub = new ViewStub(getContext(), R.layout.common_empty);
+            mLoadingStub = new ViewStub(getContext(),com.wangxing.code. R.layout.common_loading);
+            mErrorStub = new ViewStub(getContext(),com.wangxing.code. R.layout.common_error);
+            mEmptyStub = new ViewStub(getContext(),com.wangxing.code. R.layout.common_empty);
 
             addView(mLoadingStub);
             addView(mErrorStub);
@@ -130,7 +130,7 @@ public class CommonLayout extends FrameLayout {
             mErrorView = mErrorStub.inflate();
             mErrorView.setVisibility(VISIBLE);
 
-            TextView errorTv = (TextView) mErrorView.findViewById(R.id.tv_common_error);
+            TextView errorTv = (TextView) mErrorView.findViewById(com.wangxing.code.R.id.tv_common_error);
             errorTv.setOnClickListener(mOnErrorClickListener);
         }
     }

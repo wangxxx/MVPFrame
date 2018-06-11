@@ -84,14 +84,14 @@ public class BannerUtil {
 
     // 初始化banner views
     private void initViews(View view) {
-        mContentView = view.findViewById(R.id.fl_home_banner);
+        mContentView = view.findViewById(com.wangxing.code.R.id.fl_home_banner);
         banner = (Banner) view.findViewById(R.id.banner);
     }
 
     // 初始化banner views
     private void initViews(Activity activity) {
-        mContentView = activity.findViewById(R.id.fl_home_banner);
-        banner = (Banner) activity.findViewById(R.id.banner);
+        mContentView = activity.findViewById(com.wangxing.code.R.id.fl_home_banner);
+        banner = (Banner) activity.findViewById(com.wangxing.code.R.id.banner);
     }
 
     public void setBanner(List<DataBean> banners) {

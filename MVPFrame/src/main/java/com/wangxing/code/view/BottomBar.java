@@ -41,7 +41,7 @@ public class BottomBar extends TabLayout {
         View customView = tabAt.getCustomView();
 //        BGABadgeRadioButton badgeView = (BGABadgeRadioButton) customView.findViewById(R.id.bottom_bar_view);
 //        BGABadgeRelativeLayout badgeView = (BGABadgeRelativeLayout) customView.findViewById(R.id.badge_layout);
-        BGABadgeImageView icon = (BGABadgeImageView) customView.findViewById(R.id.bottom_bar_icon);
+        BGABadgeImageView icon = (BGABadgeImageView) customView.findViewById(com.wangxing.code.R.id.bottom_bar_icon);
 //        badgeView.setVisibility(VISIBLE);
         icon.showTextBadge(badgeCount);
 
@@ -51,7 +51,7 @@ public class BottomBar extends TabLayout {
     public void setDragDismissDelegage(BGADragDismissDelegate delegate) {
         TabLayout.Tab tabAt = getTabAt(1);
         View customView = tabAt.getCustomView();
-        BGABadgeImageView icon = (BGABadgeImageView) customView.findViewById(R.id.bottom_bar_icon);
+        BGABadgeImageView icon = (BGABadgeImageView) customView.findViewById(com.wangxing.code.R.id.bottom_bar_icon);
         icon.setDragDismissDelegage(delegate);
     }
 
@@ -60,7 +60,7 @@ public class BottomBar extends TabLayout {
         TabLayout.Tab tabAt = getTabAt(1);
         View customView = tabAt.getCustomView();
 //        BGABadgeRelativeLayout badgeView = (BGABadgeRelativeLayout) customView.findViewById(R.id.badge_layout);
-        BGABadgeImageView icon = (BGABadgeImageView) customView.findViewById(R.id.bottom_bar_icon);
+        BGABadgeImageView icon = (BGABadgeImageView) customView.findViewById(com.wangxing.code.R.id.bottom_bar_icon);
         icon.hiddenBadge();
     }
 
@@ -68,13 +68,13 @@ public class BottomBar extends TabLayout {
     public void addItem(int resId, int textResId) {
         TabLayout.Tab tab = newTab();
         tab.setText(textResId);
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.item_main_bottom_tab, this, false);
+        View view = LayoutInflater.from(getContext()).inflate(com.wangxing.code.R.layout.item_main_bottom_tab, this, false);
 //        mTestBv.getBadgeViewHelper().setBadgeBorderColorInt(Color.parseColor("#0000FF"));
 //        mTestBv.getBadgeViewHelper().setBadgeBgColorInt(Color.parseColor("#00FF00"));
 //        mTestBv.getBadgeViewHelper().setBadgeTextColorInt(Color.parseColor("#FF0000"));
-        TextView title = (TextView) view.findViewById(R.id.bottom_bar_titles);
+        TextView title = (TextView) view.findViewById(com.wangxing.code.R.id.bottom_bar_titles);
 //        BGABadgeRadioButton itemView = (BGABadgeRadioButton) view.findViewById(R.id.bottom_bar_view);
-        BGABadgeImageView icon = (BGABadgeImageView) view.findViewById(R.id.bottom_bar_icon);
+        BGABadgeImageView icon = (BGABadgeImageView) view.findViewById(com.wangxing.code.R.id.bottom_bar_icon);
 //        itemView.setCompoundDrawablesWithIntrinsicBounds(0, resId, 0, 0);
         icon.setImageResource(resId);
         title.setText(textResId);

@@ -32,7 +32,7 @@ public class GreyLinearItemDecoration extends RecyclerView.ItemDecoration {
 
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
-        mPaint.setColor(ContextCompat.getColor(context, R.color.grey_ededed));
+        mPaint.setColor(ContextCompat.getColor(context, com.wangxing.code.R.color.grey_ededed));
     }
 
     @Override

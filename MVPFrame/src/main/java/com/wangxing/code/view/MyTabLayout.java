@@ -36,10 +36,10 @@ public class MyTabLayout extends TabLayout {
         super(context, attrs, defStyleAttr);
 
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TabLayout,
-                defStyleAttr, R.style.Widget_Design_TabLayout);
-        int tabTextAppearance = a.getResourceId(R.styleable.TabLayout_tabTextAppearance,
-                R.style.TextAppearance_Design_Tab);
+        TypedArray a = context.obtainStyledAttributes(attrs, com.wangxing.code.R.styleable.TabLayout,
+                defStyleAttr,com.wangxing.code. R.style.Widget_Design_TabLayout);
+        int tabTextAppearance = a.getResourceId(com.wangxing.code.R.styleable.TabLayout_tabTextAppearance,
+                com.wangxing.code. R.style.TextAppearance_Design_Tab);
 
         a.recycle();
     }

@@ -58,9 +58,9 @@ public class LabelView extends ViewGroup implements View.OnClickListener {
 
     private void init(AttributeSet attrs) {
         if (attrs != null) {
-            TypedArray ta = getContext().obtainStyledAttributes(attrs, R.styleable.LabelView);
-            mLabelSpacing = ta.getDimensionPixelSize(R.styleable.LabelView_label_spacing, 0);
-            mLineSpacing = ta.getDimensionPixelSize(R.styleable.LabelView_line_spacing, 0);
+            TypedArray ta = getContext().obtainStyledAttributes(attrs, com.wangxing.code.R.styleable.LabelView);
+            mLabelSpacing = ta.getDimensionPixelSize(com.wangxing.code.R.styleable.LabelView_label_spacing, 0);
+            mLineSpacing = ta.getDimensionPixelSize(com.wangxing.code.R.styleable.LabelView_line_spacing, 0);
             ta.recycle();
         }
         setLabels(null);
@@ -82,7 +82,7 @@ public class LabelView extends ViewGroup implements View.OnClickListener {
             for (int i = 0; i < mLabels.size(); i++) {
                 LabelBean bean = mLabels.get(i);
 
-                TextView labelView = (TextView) inflater.inflate(R.layout.item_label, this, false);
+                TextView labelView = (TextView) inflater.inflate(com.wangxing.code.R.layout.item_label, this, false);
                 if (null != mBackgroundRes) {
                     labelView.setBackground(mBackgroundRes);
                 }
