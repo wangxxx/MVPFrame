@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MVPFrame</string>
+    <string name="common_exit_app">再按一次退出应用</string>
+    <string name="common_money">￥%1$s</string>
+    <string name="common_count">x%1$s</string>
+    <string name="common_total_price">合计：￥%1$s</string>
+    <string name="common_connection_error">网络连接出错，请检查设置</string>
+    <string name="common_dialog_title">温馨提示</string>
+    <string name="common_dialog_cancel">取消</string>
+    <string name="common_dialog_confirm">确定</string>
+    <string name="common_no_next">我的有底线的~</string>
+</resources>
