@@ -12,7 +12,12 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
 }
+
 
 dependencies {
     api 'com.aliyun.dpa:oss-android-sdk:2.4.5'
