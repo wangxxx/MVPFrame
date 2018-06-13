@@ -11,7 +11,6 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.wangxing.code.FrameConst;
-import com.wangxing.code.R;
 
 
 // 内容布局ID必须为common_content
@@ -76,9 +75,9 @@ public class CommonLayout extends FrameLayout {
 
     private void init() {
         if (mLoadingStub == null) {
-            mLoadingStub = new ViewStub(getContext(),com.wangxing.code. R.layout.common_loading);
-            mErrorStub = new ViewStub(getContext(),com.wangxing.code. R.layout.common_error);
-            mEmptyStub = new ViewStub(getContext(),com.wangxing.code. R.layout.common_empty);
+            mLoadingStub = new ViewStub(getContext(), com.wangxing.code.R.layout.common_loading);
+            mErrorStub = new ViewStub(getContext(), com.wangxing.code.R.layout.common_error);
+            mEmptyStub = new ViewStub(getContext(), com.wangxing.code.R.layout.common_empty);
 
             addView(mLoadingStub);
             addView(mErrorStub);

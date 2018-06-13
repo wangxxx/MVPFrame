@@ -34,7 +34,7 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
     }
 
     public CommonDialog(Context context, String message) {
-        this(context, context.getString(R.string.common_dialog_title), message);
+        this(context, context.getString(com.wangxing.code.R.string.common_dialog_title), message);
     }
 
     public CommonDialog(Context context, String title, String message) {
