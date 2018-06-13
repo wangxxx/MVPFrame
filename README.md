@@ -11,5 +11,5 @@ Step 2.
 model.gradle
 Add the dependency
 	dependencies {
-	        implementation 'com.github.wangxxx:MVPFrame:1.0.0'
+	       implementation 'com.github.wangxxx:MVPFrame:v1.1.6'
 	}
