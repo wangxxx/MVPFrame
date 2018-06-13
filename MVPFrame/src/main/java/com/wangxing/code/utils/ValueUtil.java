@@ -1,5 +1,6 @@
 package com.wangxing.code.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.format.DateUtils;
 import android.util.TypedValue;
@@ -13,10 +14,15 @@ import java.util.Locale;
 
 
 public class ValueUtil {
+    @SuppressLint("SimpleDateFormat")
     private static final SimpleDateFormat DATE_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+    @SuppressLint("SimpleDateFormat")
     private static final SimpleDateFormat LONG_TIME_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    @SuppressLint("SimpleDateFormat")
     private static final SimpleDateFormat SHORT_TIME_FORMAT = new SimpleDateFormat("MM月dd日 HH:mm");
+    @SuppressLint("SimpleDateFormat")
     private static final SimpleDateFormat TIME_STAMP = new SimpleDateFormat("yyyyMMddHHmmssSSSS");
+    @SuppressLint("SimpleDateFormat")
     private static final SimpleDateFormat SPECIFIC_DATE = new SimpleDateFormat("yyyyMMdd");
 
     public static int dpToPx(Context context, int dp) {

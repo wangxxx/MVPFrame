@@ -23,15 +23,6 @@ public class ImageUtil {
         return path;
     }
 
-//    public static String getSystemFullPath(String path) {
-//        return getImageUrlPrefix() + path;
-//    }
-
-    private static String getImageUrlPrefix() {
-        return "";
-//        return ConfigUtils.sConfig != null ? ConfigUtils.sConfig.imgurl : "http://www.yahao.ren";
-    }
-
     /**
      * 获取本地视频的第一帧
      *
