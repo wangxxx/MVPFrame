@@ -89,11 +89,8 @@
     <color name="red">#FF0000</color>
     <color name="red_ff4055">#FF4055</color>
     <color name="red_ff5339">#ff5339</color>
-    //主色
     <color name="red_f02b2b">#f02b2b</color>
-    //按钮切换颜色
     <color name="red_d10019">#d10019</color>
-    //首页badgeview bg
     <color name="red_e60012">#e60012</color>
     <color name="red_e12025">#e12025</color>
     <color name="red_f23030">#f23030</color>
@@ -126,7 +123,6 @@
     <color name="blue_55d2f8">#55d2f8</color>
     <color name="blue_2659cc">#2659cc</color>
     <color name="blue_69b0f9">#69b0f9</color>
-    //光标颜色
     <color name="blue_3385ff">#3385ff</color>
 
     <color name="green_9bc465">#9bc465</color>
@@ -147,9 +143,7 @@
     <color name="white_99FFFFFF">#99FFFFFF</color>
     <color name="white_00ffffff">#00ffffff</color>
 
-    <!-- 首页 -->
     <color name="banner_indicator_active">#FFFFFF</color>
     <color name="banner_indicator_inactive">#b3b3b3</color>
-    <!--发现tabs条-->
     <color name="background_tab_pressed">#6633B5E5</color>
 </resources>
