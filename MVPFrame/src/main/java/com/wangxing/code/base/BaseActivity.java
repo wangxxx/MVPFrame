@@ -149,19 +149,18 @@ public abstract class BaseActivity<M extends BaseModelInterface,
         }
     }
 
+    public abstract int getLayoutResId();
 
     protected abstract void initPresenter();
-
-    protected abstract void initView();
 
     protected abstract void initIntentData();
 
     protected abstract void initToolBar();
 
+    protected abstract void initView();
+
     protected void doBeforeSetContentView() {
     }
-
-    public abstract int getLayoutResId();
 
     public void startActivity(Class<? extends Activity> clazz) {
         Intent intent = new Intent(this, clazz);

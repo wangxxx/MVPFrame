@@ -115,12 +115,11 @@ public abstract class BaseFragment<M extends BaseModelInterface, P extends BaseP
 
     protected abstract void initPresenter();
 
-    protected abstract void initView();
+    protected abstract void initArgumentsData();
 
     protected abstract void initToolBar();
 
-    protected abstract void initArgumentsData();
-
+    protected abstract void initView();
 
     protected abstract void initData();
 
