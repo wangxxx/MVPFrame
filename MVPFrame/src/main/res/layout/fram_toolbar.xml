@@ -49,6 +49,12 @@
         android:textSize="18sp"
         tools:text="标题" />
 
+    <View
+        android:layout_alignParentBottom="true"
+        android:background="@color/grey_e5e5e5"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+
     <!-- 右侧 -->
     <FrameLayout
         android:id="@+id/fl_toolbar_right"

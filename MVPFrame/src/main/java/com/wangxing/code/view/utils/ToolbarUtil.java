@@ -33,7 +33,7 @@ public class ToolbarUtil implements View.OnClickListener {
         init(parentView);
     }
 
-    public void init(Activity activity) {
+    private void init(Activity activity) {
         mToolbarView = mActivity.findViewById(com.wangxing.code.R.id.frame_toolbar);
         mLeftTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_left);
         mLeftIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_left);
@@ -45,7 +45,7 @@ public class ToolbarUtil implements View.OnClickListener {
         mLeftFl.setOnClickListener(this);
     }
 
-    public void init(View parentView) {
+    private void init(View parentView) {
         mToolbarView = parentView.findViewById(com.wangxing.code.R.id.toolbar);
         mLeftTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_left);
         mLeftIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_left);
@@ -143,7 +143,7 @@ public class ToolbarUtil implements View.OnClickListener {
 
     public void setLightBackTheme(String title) {
         setTitle(title);
-        setBackgroundColor(ContextCompat.getColor(mActivity,R.color.grey_fafafa));
+        setBackgroundColor(ContextCompat.getColor(mActivity, R.color.white_ffffff));
         setLeftImage(R.drawable.icon_back);
     }
 
