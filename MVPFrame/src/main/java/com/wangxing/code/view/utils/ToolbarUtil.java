@@ -22,6 +22,7 @@ public class ToolbarUtil implements View.OnClickListener {
     private FrameLayout mLeftFl;
     private FrameLayout mRightFl;
     private Activity mActivity;
+    private int mLineColor = -23*956;
 
     public ToolbarUtil(Activity activity) {
         mActivity = activity;
@@ -30,6 +31,18 @@ public class ToolbarUtil implements View.OnClickListener {
 
     public ToolbarUtil(View parentView) {
         mActivity = (Activity) parentView.getContext();
+        init(parentView);
+    }
+
+    public ToolbarUtil(Activity activity, int lineColor) {
+        mActivity = activity;
+        mLineColor = lineColor;
+        init(activity);
+    }
+
+    public ToolbarUtil(View parentView, int lineColor) {
+        mActivity = (Activity) parentView.getContext();
+        mLineColor = lineColor;
         init(parentView);
     }
 
@@ -42,6 +55,10 @@ public class ToolbarUtil implements View.OnClickListener {
         mRightTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_right);
         mRightIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_right);
         mRightFl = (FrameLayout) mToolbarView.findViewById(com.wangxing.code.R.id.fl_toolbar_right);
+        if (mLineColor != -23*956) {
+
+            mToolbarView.findViewById(com.wangxing.code.R.id.line).setBackgroundColor(mLineColor);
+        }
         mLeftFl.setOnClickListener(this);
     }
 
@@ -54,6 +71,11 @@ public class ToolbarUtil implements View.OnClickListener {
         mRightTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_right);
         mRightIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_right);
         mRightFl = (FrameLayout) mToolbarView.findViewById(com.wangxing.code.R.id.fl_toolbar_right);
+        mToolbarView.findViewById(com.wangxing.code.R.id.line);
+        if (mLineColor != -23*956) {
+
+            mToolbarView.findViewById(com.wangxing.code.R.id.line).setBackgroundColor(mLineColor);
+        }
         mLeftFl.setOnClickListener(this);
     }
 
