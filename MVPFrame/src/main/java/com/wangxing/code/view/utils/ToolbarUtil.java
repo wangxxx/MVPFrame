@@ -50,7 +50,7 @@ public class ToolbarUtil implements View.OnClickListener {
     }
 
     private void init(View parentView) {
-        mToolbarView = parentView.findViewById(com.wangxing.code.R.id.toolbar);
+        mToolbarView = parentView.findViewById(com.wangxing.code.R.id.frame_toolbar);
         mLeftTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_left);
         mLeftIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_left);
         mLeftFl = (FrameLayout) mToolbarView.findViewById(com.wangxing.code.R.id.fl_toolbar_left);
