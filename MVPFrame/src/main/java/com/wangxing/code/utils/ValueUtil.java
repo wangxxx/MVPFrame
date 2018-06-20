@@ -108,7 +108,9 @@ public class ValueUtil {
      * @return 处理完之后的字符串
      */
     public static String addComma(String str) {
+
         DecimalFormat decimalFormat = new DecimalFormat(",###");
+
         return decimalFormat.format(Double.parseDouble(str));
     }
 
