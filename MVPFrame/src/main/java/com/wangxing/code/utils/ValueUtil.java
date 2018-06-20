@@ -8,6 +8,7 @@ import android.util.TypedValue;
 
 import com.wangxing.code.R;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -85,6 +86,7 @@ public class ValueUtil {
         return DateUtils.formatElapsedTime(duration);
     }
 
+
     public static String formatMoney(Context context, float money) {
         return context.getString(R.string.common_money,
                 String.format(Locale.ENGLISH, "%.2f", money));
@@ -97,6 +99,17 @@ public class ValueUtil {
 
         }
         return 0.00;
+    }
+
+    /**
+     * 将每三个数字加上逗号处理（通常使用金额方面的编辑）
+     *
+     * @param str 需要处理的字符串
+     * @return 处理完之后的字符串
+     */
+    public static String addComma(String str) {
+        DecimalFormat decimalFormat = new DecimalFormat(",###");
+        return decimalFormat.format(Double.parseDouble(str));
     }
 
 }
