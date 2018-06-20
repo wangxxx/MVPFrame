@@ -1,6 +1,7 @@
 package com.wangxing.code.view.utils;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
@@ -21,8 +22,9 @@ public class ToolbarUtil implements View.OnClickListener {
     private ImageView mRightIv;
     private FrameLayout mLeftFl;
     private FrameLayout mRightFl;
+    private TextView mLine;
     private Activity mActivity;
-    private int mLineColor = -23*956;
+    private Color mLineColor;
 
     public ToolbarUtil(Activity activity) {
         mActivity = activity;
@@ -31,18 +33,6 @@ public class ToolbarUtil implements View.OnClickListener {
 
     public ToolbarUtil(View parentView) {
         mActivity = (Activity) parentView.getContext();
-        init(parentView);
-    }
-
-    public ToolbarUtil(Activity activity, int lineColor) {
-        mActivity = activity;
-        mLineColor = lineColor;
-        init(activity);
-    }
-
-    public ToolbarUtil(View parentView, int lineColor) {
-        mActivity = (Activity) parentView.getContext();
-        mLineColor = lineColor;
         init(parentView);
     }
 
@@ -55,10 +45,7 @@ public class ToolbarUtil implements View.OnClickListener {
         mRightTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_right);
         mRightIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_right);
         mRightFl = (FrameLayout) mToolbarView.findViewById(com.wangxing.code.R.id.fl_toolbar_right);
-        if (mLineColor != -23*956) {
-
-            mToolbarView.findViewById(com.wangxing.code.R.id.line).setBackgroundColor(mLineColor);
-        }
+        mLine = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.line);
         mLeftFl.setOnClickListener(this);
     }
 
@@ -71,11 +58,7 @@ public class ToolbarUtil implements View.OnClickListener {
         mRightTv = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.tv_toolbar_right);
         mRightIv = (ImageView) mToolbarView.findViewById(com.wangxing.code.R.id.ib_toolbar_right);
         mRightFl = (FrameLayout) mToolbarView.findViewById(com.wangxing.code.R.id.fl_toolbar_right);
-        mToolbarView.findViewById(com.wangxing.code.R.id.line);
-        if (mLineColor != -23*956) {
-
-            mToolbarView.findViewById(com.wangxing.code.R.id.line).setBackgroundColor(mLineColor);
-        }
+        mLine = (TextView) mToolbarView.findViewById(com.wangxing.code.R.id.line);
         mLeftFl.setOnClickListener(this);
     }
 
@@ -133,6 +116,10 @@ public class ToolbarUtil implements View.OnClickListener {
         mLeftIv.setImageResource(resId);
         mLeftIv.setVisibility(View.VISIBLE);
         mLeftTv.setVisibility(View.INVISIBLE);
+    }
+
+    public void setLineBackgroundColor(int color) {
+        mLine.setBackgroundColor(ContextCompat.getColor(mActivity, color));
     }
 
     public void setRightText(int resId) {
