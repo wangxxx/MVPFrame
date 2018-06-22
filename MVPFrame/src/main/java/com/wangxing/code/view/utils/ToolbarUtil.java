@@ -1,7 +1,7 @@
 package com.wangxing.code.view.utils;
 
 import android.app.Activity;
-import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
 import android.view.View;
@@ -24,7 +24,11 @@ public class ToolbarUtil implements View.OnClickListener {
     private FrameLayout mRightFl;
     private TextView mLine;
     private Activity mActivity;
-    private Color mLineColor;
+    public static int LEFT = 0;
+    public static int TOP = 1;
+    public static int RIGHT = 2;
+    public static int BOTTOM = 3;
+
 
     public ToolbarUtil(Activity activity) {
         mActivity = activity;
@@ -126,6 +130,29 @@ public class ToolbarUtil implements View.OnClickListener {
         mRightTv.setText(resId);
         mRightTv.setVisibility(View.VISIBLE);
         mRightIv.setVisibility(View.INVISIBLE);
+    }
+
+
+    public void setRightTextCompoundDrawables(Drawable drawable, int directionType) {
+
+        drawable.setBounds(0, 0, drawable.getMinimumWidth(), drawable.getMinimumHeight());
+        switch (directionType) {
+
+            case 0:
+                mRightTv.setCompoundDrawables(drawable, null, null, null);
+                break;
+            case 1:
+                mRightTv.setCompoundDrawables(null, drawable, null, null);
+                break;
+            case 2:
+                mRightTv.setCompoundDrawables(null, null, drawable, null);
+                break;
+            case 3:
+                mRightTv.setCompoundDrawables(null, null, null, drawable);
+                break;
+        }
+
+
     }
 
     public void setRightTextColor(int resId) {

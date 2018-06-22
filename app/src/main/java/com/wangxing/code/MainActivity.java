@@ -1,14 +1,11 @@
 package com.wangxing.code;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
+import android.widget.ImageView;
 
-import com.luck.picture.lib.config.PictureConfig;
 import com.wangxing.code.base.BaseActivity;
-import com.wangxing.code.utils.SelectPictureUtil;
-import com.wangxing.code.utils.ToastUtil;
+import com.wangxing.code.glide.ImageLoader;
 import com.wangxing.code.view.utils.ToolbarUtil;
 
 public class MainActivity extends BaseActivity {
@@ -38,15 +35,17 @@ public class MainActivity extends BaseActivity {
     protected void initToolBar() {
         ToolbarUtil toolbarUtil = new ToolbarUtil(this);
         toolbarUtil.setLineBackgroundColor(R.color.blue_2c80ba);
+        toolbarUtil.setRightText("哈哈哈");
+        toolbarUtil.setRightTextCompoundDrawables(ContextCompat.getDrawable(this, R.drawable.arrow_down), ToolbarUtil.LEFT);
     }
 
     @Override
     protected void initView() {
-
+        ImageView viewById = findViewById(R.id.image);
+        ImageLoader.getInstance().load(viewById, "");
     }
 
     public void click(View view) {
-
 
 
     }

@@ -21,6 +21,7 @@ import com.wangxing.code.utils.ValueUtil;
 public class ImageLoader {
 
     private static ImageLoader sInstance;
+    private static Drawable mPlaceholder;
 
     public static ImageLoader getInstance() {
         if (sInstance == null) {
@@ -29,6 +30,16 @@ public class ImageLoader {
         return sInstance;
     }
 
+    public static void init(Drawable placeholder) {
+
+        mPlaceholder = placeholder;
+        if (mPlaceholder == null) {
+            throw new NullPointerException("ImageLoader需要初始化");
+        }
+
+    }
+
+
     private ImageLoader() {
 //        this.mContext = context;
     }
@@ -36,14 +47,13 @@ public class ImageLoader {
     // view不能设置tag
     public void loadWithRound(ImageView view, String uri, int round) {
         if (uri == null) return;
-//        bitmapTransform(new RoundedCornersTransformation(round, 0, RoundedCornersTransformation.CornerType.ALL)
         Glide.with(view.getContext())
                 .load(uri)
                 .apply(new RequestOptions()
                         .dontAnimate()
-//                        .placeholder(R.drawable.img_default)
+                        .placeholder(mPlaceholder)
                         .diskCacheStrategy(DiskCacheStrategy.DATA)
-                        .transform(new CenterCropRoundCornerTransform(ValueUtil.dpToPx(view.getContext(),round)))
+                        .transform(new CenterCropRoundCornerTransform(ValueUtil.dpToPx(view.getContext(), round)))
                 )
                 .into(view);
     }
@@ -57,7 +67,7 @@ public class ImageLoader {
                 .apply(new RequestOptions()
                         .centerCrop()
                         .dontAnimate()
-//                        .placeholder(R.drawable.img_default)
+                        .placeholder(mPlaceholder)
                         .diskCacheStrategy(DiskCacheStrategy.DATA))
                 .into(view);
     }
@@ -70,7 +80,7 @@ public class ImageLoader {
                 .load(uri)
                 .apply(new RequestOptions()
                         .dontAnimate()
-//                        .placeholder(R.drawable.img_default)
+                        .placeholder(mPlaceholder)
                         .diskCacheStrategy(DiskCacheStrategy.DATA))
                 .into(view);
     }
@@ -83,7 +93,7 @@ public class ImageLoader {
                 .apply(new RequestOptions()
                         .centerCrop()
                         .dontAnimate()
-//                        .placeholder(R.drawable.img_default)
+                        .placeholder(mPlaceholder)
                 )
                 .into(view);
 
@@ -97,7 +107,7 @@ public class ImageLoader {
                 .apply(new RequestOptions()
                         .centerCrop()
                         .dontAnimate()
-//                        .placeholder(R.drawable.img_default)
+                        .placeholder(mPlaceholder)
                 )
                 .into(view);
 
@@ -112,7 +122,7 @@ public class ImageLoader {
                 .apply(new RequestOptions()
                         .fitCenter()
                         .dontAnimate()
-//                        .placeholder(R.drawable.img_default)
+                        .placeholder(mPlaceholder)
                         .diskCacheStrategy(DiskCacheStrategy.DATA)
                 )
                 .into(view);
@@ -148,7 +158,6 @@ public class ImageLoader {
                                 view.getLayoutParams().height = height;
                                 view.requestLayout();
 
-//                                L.e(uri + ", " + radio + ", " + height + " >>> " + view.getMeasuredWidth());
 
                                 view.setBackground(null);
 
@@ -171,7 +180,6 @@ public class ImageLoader {
                                 view.getLayoutParams().height = height;
                                 view.requestLayout();
 
-//                                L.e(uri + ", " + radio + ", " + height);
 
                                 view.setBackground(null);
 
