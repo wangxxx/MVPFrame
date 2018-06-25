@@ -6,10 +6,11 @@
     tools:background="@color/grey_ededed">
 
     <ImageView
+        android:id="@+id/iv_empty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:contentDescription="@null"
-        android:src="@drawable/img_empty_data" />
+        tools:src="@drawable/img_empty_data" />
 
 </com.wangxing.code.view.NestedFixFlingScrollView>

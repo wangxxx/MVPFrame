@@ -6,6 +6,7 @@ import android.widget.ImageView;
 
 import com.wangxing.code.base.BaseActivity;
 import com.wangxing.code.glide.ImageLoader;
+import com.wangxing.code.view.CommonLayout;
 import com.wangxing.code.view.utils.ToolbarUtil;
 
 public class MainActivity extends BaseActivity {
@@ -43,6 +44,11 @@ public class MainActivity extends BaseActivity {
     protected void initView() {
         ImageView viewById = findViewById(R.id.image);
         ImageLoader.getInstance().load(viewById, "");
+        CommonLayout commonLayout = findViewById(R.id.common_layout);
+//        commonLayout.showEmpty();
+//        commonLayout.showLoading();
+//        commonLayout.showError(R.string.picture_error);
+        commonLayout.showError(getString(R.string.picture_error));
     }
 
     public void click(View view) {

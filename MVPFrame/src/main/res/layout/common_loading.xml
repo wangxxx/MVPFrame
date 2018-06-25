@@ -6,12 +6,13 @@
     android:orientation="vertical">
 
     <ProgressBar
+        android:id="@+id/progress_Bar"
         style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="@dimen/spacing_32"
+        android:layout_height="@dimen/spacing_32"
         android:layout_gravity="center"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginBottom="@dimen/spacing_8"
+        android:layout_marginTop="@dimen/spacing_8"
         android:indeterminateDuration="1500"
         android:indeterminateDrawable="@drawable/loading_dialog_progressbar"
         />

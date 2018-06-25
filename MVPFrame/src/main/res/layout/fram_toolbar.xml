@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/frame_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="44dp"
+    android:layout_height="@dimen/spacing_44"
     android:visibility="visible">
 
     <!-- 左侧 -->
@@ -11,8 +11,8 @@
         android:id="@+id/fl_toolbar_left"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:minWidth="48dp"
-        android:paddingLeft="12dp">
+        android:minWidth="@dimen/spacing_48"
+        android:paddingStart="@dimen/spacing_12">
 
         <TextView
             android:id="@+id/tv_toolbar_left"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:textColor="@color/black_646464"
-            android:textSize="16sp"
+            android:textSize="@dimen/font_16"
             android:visibility="invisible" />
 
         <ImageView
@@ -41,12 +41,13 @@
         style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:drawablePadding="@dimen/spacing_5"
         android:ellipsize="end"
         android:gravity="center"
         android:lines="1"
         android:singleLine="true"
         android:textColor="@color/black_111111"
-        android:textSize="18sp"
+        android:textSize="@dimen/font_18"
         tools:text="标题" />
 
     <TextView
@@ -61,9 +62,9 @@
         android:id="@+id/fl_toolbar_right"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_alignParentRight="true"
-        android:minWidth="48dp"
-        android:paddingRight="12dp">
+        android:layout_alignParentEnd="true"
+        android:minWidth="@dimen/spacing_48"
+        android:paddingEnd="@dimen/spacing_12">
 
         <TextView
             android:id="@+id/tv_toolbar_right"
@@ -72,7 +73,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical|right"
             android:textColor="@color/grey_999999"
-            android:textSize="16sp"
+            android:textSize="@dimen/font_16"
             android:visibility="invisible"
             tools:text="标题"
             tools:visibility="visible" />
@@ -88,12 +89,12 @@
 
         <Button
             android:id="@+id/btn_right_go"
-            android:layout_width="50dp"
-            android:layout_height="32dp"
+            android:layout_width="@dimen/spacing_50"
+            android:layout_height="@dimen/spacing_32"
             android:layout_gravity="center_vertical|right"
             android:text=""
             android:textColor="@android:color/white"
-            android:textSize="14sp"
+            android:textSize="@dimen/font_14"
             android:visibility="gone" />
 
     </FrameLayout>

@@ -14,10 +14,10 @@ import com.wangxing.code.manager.AppForegroundStateManager;
 import com.wangxing.code.rxevent.RxManager;
 import com.wangxing.code.utils.ToastUtil;
 import com.wangxing.code.utils.TypeUtil;
+import com.wangxing.code.view.CommonLayout;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 import wxc.android.logwriter.L;
 
@@ -105,7 +105,7 @@ public abstract class BaseActivity<M extends BaseModelInterface,
     public boolean dispatchTouchEvent(MotionEvent event) {
         if (event.getAction() == MotionEvent.ACTION_DOWN) {
 
-            hiddenKeyboard(event,this);
+            hiddenKeyboard(event, this);
 
         }
         return super.dispatchTouchEvent(event);

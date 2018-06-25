@@ -3,14 +3,18 @@ package com.wangxing.code.view;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.wangxing.code.FrameConst;
+import com.wangxing.code.R;
 
 
 // 内容布局ID必须为common_content
@@ -24,6 +28,20 @@ public class CommonLayout extends FrameLayout {
     private View mEmptyView;
     private View mContentView;
     private OnClickListener mOnErrorClickListener;
+    private ImageView mEmptyImage;
+    private ProgressBar mProgressBar;
+    private TextView mErrorTv;
+    private static int mEmptyImageId = R.drawable.img_empty_data;
+    private static int mLoadingStyleId = R.drawable.loading_dialog_progressbar;
+
+    public static void setResources(int eId, int lId) {
+        if (eId != 0) {
+            mEmptyImageId = eId;
+        }
+        if (lId != 0) {
+            mLoadingStyleId = lId;
+        }
+    }
 
     public static CommonLayout create(Context context, int layoutId) {
         CommonLayout layout = (CommonLayout) LayoutInflater.from(context).inflate(com.wangxing.code.R.layout.common_layout, null);
@@ -78,7 +96,6 @@ public class CommonLayout extends FrameLayout {
             mLoadingStub = new ViewStub(getContext(), com.wangxing.code.R.layout.common_loading);
             mErrorStub = new ViewStub(getContext(), com.wangxing.code.R.layout.common_error);
             mEmptyStub = new ViewStub(getContext(), com.wangxing.code.R.layout.common_empty);
-
             addView(mLoadingStub);
             addView(mErrorStub);
             addView(mEmptyStub);
@@ -106,6 +123,22 @@ public class CommonLayout extends FrameLayout {
         setLoadingViewVisible(GONE);
     }
 
+    public void showError(int errorText) {
+        mContentView.setVisibility(GONE);
+        setErrorViewVisible(VISIBLE);
+        setEmptyViewVisible(GONE);
+        setLoadingViewVisible(GONE);
+        mErrorTv.setText(errorText);
+    }
+
+    public void showError(String errorText) {
+        mContentView.setVisibility(GONE);
+        setErrorViewVisible(VISIBLE);
+        setEmptyViewVisible(GONE);
+        setLoadingViewVisible(GONE);
+        mErrorTv.setText(errorText);
+    }
+
     public void showContent() {
         mContentView.setVisibility(VISIBLE);
         setErrorViewVisible(GONE);
@@ -118,6 +151,8 @@ public class CommonLayout extends FrameLayout {
             mEmptyView.setVisibility(visible);
         } else if (visible == VISIBLE) {
             mEmptyView = mEmptyStub.inflate();
+            mEmptyImage = mEmptyView.findViewById(R.id.iv_empty);
+            mEmptyImage.setImageResource(mEmptyImageId);
             mEmptyView.setVisibility(VISIBLE);
         }
     }
@@ -129,8 +164,8 @@ public class CommonLayout extends FrameLayout {
             mErrorView = mErrorStub.inflate();
             mErrorView.setVisibility(VISIBLE);
 
-            TextView errorTv = (TextView) mErrorView.findViewById(com.wangxing.code.R.id.tv_common_error);
-            errorTv.setOnClickListener(mOnErrorClickListener);
+            mErrorTv = (TextView) mErrorView.findViewById(com.wangxing.code.R.id.tv_common_error);
+            mErrorTv.setOnClickListener(mOnErrorClickListener);
         }
     }
 
@@ -139,11 +174,19 @@ public class CommonLayout extends FrameLayout {
             mLoadingView.setVisibility(visible);
         } else if (visible == VISIBLE) {
             mLoadingView = mLoadingStub.inflate();
+            mProgressBar = mLoadingView.findViewById(R.id.progress_Bar);
+            mProgressBar.setIndeterminateDrawable(ContextCompat.getDrawable(getContext(), mLoadingStyleId));
             mLoadingView.setVisibility(VISIBLE);
+
         }
     }
 
     public void setOnErrorClickListener(OnClickListener listener) {
         mOnErrorClickListener = listener;
     }
+
+    public void setEmptyImage(int imageId) {
+        mEmptyImage.setImageResource(imageId);
+    }
+
 }

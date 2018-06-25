@@ -19,7 +19,6 @@ public class FrameConst {
     private static Application sApp;
     private static ApiClient instance;
 
-
     public static Application getContext() {
         if (sApp == null) {
             throw new NullPointerException("Const需要初始化");
@@ -55,11 +54,7 @@ public class FrameConst {
 
     public static final String OSS_BUCKET = "qianshijie";
 
-    public static final String OSS_SHOP_IMAGE_CALLBACK = "http://neufmer.iok.la/QianGuizhou/foreground/rShopImgCallback";
-//    public static final String OSS_SHOP_IMAGE_CALLBACK = "http://qsje.tv/QianGuizhou/foreground/rShopImgCallback";
-
     public static final String OSS_ROOM_IMAGE_CALLBACK = "http://neufmer.iok.la/QianGuizhou/foreground/rRoomCategoryImgCallback";
-//    public static final String OSS_ROOM_IMAGE_CALLBACK = "http://qsje.tv/QianGuizhou/foreground/rRoomCategoryImgCallback";
 
     /**
      * 用户信息
@@ -82,9 +77,5 @@ public class FrameConst {
     public static final String LATITUDE = "latitude";
 
     public static final String CITY_NAME = "city";
-
-    //微信支付
-    public static final String WX_APP_ID = "wx68dd2359ac382326";
-
 
 }

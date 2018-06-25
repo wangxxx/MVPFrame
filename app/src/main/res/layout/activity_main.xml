@@ -21,8 +21,20 @@
 
     <ImageView
         android:id="@+id/image"
-        android:background="@color/red"
         android:layout_width="60dp"
-        android:layout_height="60dp" />
+        android:layout_height="60dp"
+        android:background="@color/red" />
+
+    <com.wangxing.code.view.CommonLayout
+        android:id="@+id/common_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/common_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.wangxing.code.view.CommonLayout>
 
 </LinearLayout>
