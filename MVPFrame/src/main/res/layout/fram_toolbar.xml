@@ -41,7 +41,6 @@
         style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:drawablePadding="@dimen/spacing_5"
         android:ellipsize="end"
         android:gravity="center"
         android:lines="1"
@@ -75,6 +74,7 @@
             android:textColor="@color/grey_999999"
             android:textSize="@dimen/font_16"
             android:visibility="invisible"
+            android:drawablePadding="@dimen/spacing_5"
             tools:text="标题"
             tools:visibility="visible" />
 
