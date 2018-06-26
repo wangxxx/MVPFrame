@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.wangxing.code.FrameConst;
 import com.wangxing.code.R;
 
 
@@ -86,7 +85,7 @@ public class CommonLayout extends FrameLayout {
     protected void onFinishInflate() {
         super.onFinishInflate();
         if (mContentView == null) {
-            int viewId = FrameConst.getContext().getResources().getIdentifier("common_content", "id", this.getContext().getPackageName());
+            int viewId = getContext().getResources().getIdentifier("common_content", "id", getContext().getPackageName());
             mContentView = findViewById(viewId);
         }
     }
