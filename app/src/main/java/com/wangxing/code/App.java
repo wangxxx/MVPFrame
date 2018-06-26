@@ -24,7 +24,7 @@ public class App extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         FrameConst.init(this);
-        CommonLayout.setResources(R.drawable.audio_placeholder, R.drawable.progressloading);
+        CommonLayout.setResources(R.drawable.audio_placeholder, 0);
         ImageLoader.init(ContextCompat.getDrawable(this, R.drawable.arrow_down));
 
 

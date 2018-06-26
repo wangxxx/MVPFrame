@@ -13,7 +13,7 @@
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/spacing_8"
         android:layout_marginTop="@dimen/spacing_8"
-        android:indeterminateDuration="1500"
+        android:indeterminateDuration="100"
         android:indeterminateDrawable="@drawable/loading_dialog_progressbar"
         />
 

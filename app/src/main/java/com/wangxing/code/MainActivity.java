@@ -46,9 +46,9 @@ public class MainActivity extends BaseActivity {
         ImageLoader.getInstance().load(viewById, "");
         CommonLayout commonLayout = findViewById(R.id.common_layout);
 //        commonLayout.showEmpty();
-//        commonLayout.showLoading();
+        commonLayout.showLoading();
 //        commonLayout.showError(R.string.picture_error);
-        commonLayout.showError(getString(R.string.picture_error));
+//        commonLayout.showError(getString(R.string.picture_error));
     }
 
     public void click(View view) {
