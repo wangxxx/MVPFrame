@@ -2,9 +2,11 @@ package com.wangxing.code.view;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.wangxing.code.R;
@@ -31,8 +33,9 @@ public class LoadingDialog {
     public static Dialog showDialogForLoading(Activity context, String msg, boolean cancelable) {
         View view = LayoutInflater.from(context).inflate(com.wangxing.code.R.layout.dialog_loading, null);
         TextView loadingText = (TextView) view.findViewById(com.wangxing.code.R.id.id_tv_loading_dialog_text);
+        ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.callback_progress);
+        progressBar.setIndeterminateDrawable(ContextCompat.getDrawable(context, CommonLayout.getLoadingId()));
         loadingText.setText(msg);
-
         mLoadingDialog = new Dialog(context, com.wangxing.code.R.style.CustomProgressDialog);
         mLoadingDialog.setCancelable(cancelable);
         mLoadingDialog.setCanceledOnTouchOutside(false);
@@ -41,18 +44,6 @@ public class LoadingDialog {
         return mLoadingDialog;
     }
 
-    public static Dialog showDialogForLoading(Activity context) {
-        View view = LayoutInflater.from(context).inflate(com.wangxing.code.R.layout.dialog_loading, null);
-        TextView loadingText = (TextView) view.findViewById(com.wangxing.code.R.id.id_tv_loading_dialog_text);
-        loadingText.setText("加载中...");
-
-        mLoadingDialog = new Dialog(context,com.wangxing.code. R.style.CustomProgressDialog);
-        mLoadingDialog.setCancelable(true);
-        mLoadingDialog.setCanceledOnTouchOutside(false);
-        mLoadingDialog.setContentView(view, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-        mLoadingDialog.show();
-        return mLoadingDialog;
-    }
 
     /**
      * 关闭加载对话框

@@ -42,6 +42,10 @@ public class CommonLayout extends FrameLayout {
         }
     }
 
+    public static int getLoadingId(){
+        return mLoadingStyleId;
+    }
+
     public static CommonLayout create(Context context, int layoutId) {
         CommonLayout layout = (CommonLayout) LayoutInflater.from(context).inflate(com.wangxing.code.R.layout.common_layout, null);
         View view = LayoutInflater.from(context).inflate(layoutId, layout, false);
