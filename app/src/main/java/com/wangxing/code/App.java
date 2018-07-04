@@ -23,7 +23,7 @@ public class App extends MultiDexApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        FrameConst.init(this);
+        FrameConst.init(this, "");
         CommonLayout.setResources(R.drawable.audio_placeholder, 0);
         ImageLoader.init(ContextCompat.getDrawable(this, R.drawable.arrow_down));
 
