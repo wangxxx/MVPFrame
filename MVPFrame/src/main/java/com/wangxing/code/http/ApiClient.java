@@ -50,11 +50,11 @@ public class ApiClient {
 
     private Retrofit mRetrofit;
 
-    public static ApiClient getInstance() {
+    public static ApiClient getInstance(String baseUrl) {
         if (sInstance == null) {
             synchronized (ApiClient.class) {
                 if (sInstance == null) {
-                    sInstance = new ApiClient();
+                    sInstance = new ApiClient(baseUrl);
                 }
             }
         }
@@ -65,7 +65,7 @@ public class ApiClient {
         return mRetrofit.create(clazz);
     }
 
-    private ApiClient() {
+    private ApiClient(String baseUrl) {
         PersistentCookieJar cookieJar = new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(FrameConst.getContext()));
 
 
@@ -82,7 +82,7 @@ public class ApiClient {
 
         mRetrofit = new Retrofit.Builder()
                 .client(client)
-                .baseUrl(BASE_URL)
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();

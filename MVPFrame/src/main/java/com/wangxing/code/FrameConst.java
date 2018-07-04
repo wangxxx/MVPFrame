@@ -26,10 +26,10 @@ public class FrameConst {
         return sApp;
     }
 
-    public static void init(Application application) {
+    public static void init(Application application,String baseUrl) {
         sApp = application;
         ImageMeasureUtil.init(application);
-        instance = ApiClient.getInstance();
+        instance = ApiClient.getInstance(baseUrl);
         L.Builder builder = new L.Builder();
         L.set(builder.addLogCat().addLocalLog(application.getApplicationContext()).logCrash(application.getApplicationContext()).create());
 

@@ -32,6 +32,12 @@ public class MainActivity extends BaseActivity {
 
     }
 
+//    @Override
+//    protected void doBeforeSetContentView() {
+//        super.doBeforeSetContentView();
+//        setStatusBarDarkMode();
+//    }
+
     @Override
     protected void initToolBar() {
         ToolbarUtil toolbarUtil = new ToolbarUtil(this);
