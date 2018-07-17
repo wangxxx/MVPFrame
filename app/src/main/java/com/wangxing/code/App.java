@@ -27,6 +27,5 @@ public class App extends MultiDexApplication {
         CommonLayout.setResources(R.drawable.audio_placeholder, 0);
         ImageLoader.init(ContextCompat.getDrawable(this, R.drawable.arrow_down));
 
-
     }
 }

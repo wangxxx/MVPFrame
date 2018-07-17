@@ -87,7 +87,6 @@ public abstract class BaseActivity<M extends BaseModelInterface,
         L.e("当前Activity为------------->" + getClass().getCanonicalName());
         this.setStatusBarDarkMode();
 
-
     }
 
     @Override
