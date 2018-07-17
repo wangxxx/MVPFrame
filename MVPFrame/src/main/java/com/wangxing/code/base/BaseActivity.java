@@ -86,7 +86,6 @@ public abstract class BaseActivity<M extends BaseModelInterface,
         this.initToolBar();
         L.e("当前Activity为------------->" + getClass().getCanonicalName());
         this.setStatusBarDarkMode();
-
     }
 
     @Override
