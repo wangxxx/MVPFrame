@@ -22,6 +22,7 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
     private TextView mTitleTv;
     private TextView mMessageTv;
     private Integer mDrawable;
+    private int resId = com.wangxing.code.R.layout.dialog;
 
     public interface OnDialogClickListener {
         void doConfirm();
@@ -30,26 +31,36 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
     }
 
     public CommonDialog(Context context) {
-        this(context, null);
+        this(context, null, null, 0);
     }
 
-    public CommonDialog(Context context, String message) {
-        this(context, context.getString(com.wangxing.code.R.string.common_dialog_title), message);
+    public CommonDialog(Context context, int newResId) {
+        this(context, null, null, newResId);
     }
 
-    public CommonDialog(Context context, String title, String message) {
+    public CommonDialog(Context context, String message, int newResId) {
+        this(context, context.getString(com.wangxing.code.R.string.common_dialog_title), message, newResId);
+    }
+
+    public CommonDialog(Context context, String title, String message, int newResId) {
         super(context, com.wangxing.code.R.style.CommonDialog);
         mContext = context;
         mTitle = title;
         mMessage = message;
+        if (newResId != 0) {
+            resId = newResId;
+        }
     }
 
-    public CommonDialog(Context context, Integer drawable, String title, String message) {
+    public CommonDialog(Context context, Integer drawable, String title, String message, int newResId) {
         super(context, com.wangxing.code.R.style.CommonDialog);
         mContext = context;
         mTitle = title;
         mMessage = message;
         mDrawable = drawable;
+        if (newResId != 0) {
+            resId = newResId;
+        }
     }
 
     @Override
@@ -60,10 +71,10 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
 
     public void init() {
         LayoutInflater inflater = LayoutInflater.from(mContext);
-        View view = inflater.inflate(com.wangxing.code.R.layout.dialog, null);
+        View view = inflater.inflate(resId, null);
         setContentView(view);
 
-        mTitleTv = (TextView) view.findViewById(com.wangxing.code.R.id.tv_dialog_title);
+        mTitleTv = (TextView) view.findViewById(R.id.tv_dialog_title);
         if (!TextUtils.isEmpty(mTitle)) {
             mTitleTv.setText(mTitle);
         } else if (mTitleSpan != null) {
@@ -72,7 +83,7 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
             mTitleTv.setVisibility(View.GONE);
         }
 
-        mMessageTv = (TextView) view.findViewById(com.wangxing.code.R.id.tv_dialog_message);
+        mMessageTv = (TextView) view.findViewById(R.id.tv_dialog_message);
 
         if (!TextUtils.isEmpty(mMessage)) {
             updateMessage(mMessage);
@@ -84,8 +95,8 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
 //            mTitleTv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.icon_del_product, 0, 0, 0);
         }
 
-        view.findViewById(com.wangxing.code.R.id.tv_cancel_dialog).setOnClickListener(this);
-        view.findViewById(com.wangxing.code.R.id.tv_sure_dialog).setOnClickListener(this);
+        view.findViewById(R.id.tv_cancel_dialog).setOnClickListener(this);
+        view.findViewById(R.id.tv_sure_dialog).setOnClickListener(this);
     }
 
     public void updateMessage(String message) {
@@ -107,9 +118,9 @@ public class CommonDialog extends Dialog implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         int id = v.getId();
-        if (id == com.wangxing.code.R.id.tv_sure_dialog) {
+        if (id == R.id.tv_sure_dialog) {
             mListener.doConfirm();
-        } else if (id == com.wangxing.code.R.id.tv_cancel_dialog) {
+        } else if (id == R.id.tv_cancel_dialog) {
             mListener.doCancel();
         }
     }

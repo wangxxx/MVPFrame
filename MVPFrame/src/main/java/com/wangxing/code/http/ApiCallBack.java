@@ -46,11 +46,11 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
     }
 
     public ApiCallBack(Context context) {
-        this(context, "玩命加载中...", false);
+        this(context, "Loading...", false);
     }
 
     public ApiCallBack(Context context, boolean showDialog) {
-        this(context, "玩命加载中...", showDialog);
+        this(context, "Loading...", showDialog);
     }
 
     @Override
