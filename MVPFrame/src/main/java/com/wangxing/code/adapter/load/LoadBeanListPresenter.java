@@ -77,6 +77,8 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
 
     public abstract void requestNextPage();
 
+    public abstract void returnRequestBean(T data);
+
 
     public ApiCallBack<T> getCallBack() {
         mCallBack = new ApiCallBack<T>(mContext) {
@@ -104,6 +106,7 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                 }
 
                 if (bean.getList().size() <= mPageSize) {
+                    returnRequestBean(bean);
                     mAdapter.addItemsToLast(bean.getList());
                     if (bean.getList().size() >= mPageSize) {
                         mRecyclerView.loadMoreComplete();
