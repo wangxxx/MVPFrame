@@ -8,6 +8,7 @@ import com.wangxing.code.http.ApiCallBack;
 import com.wangxing.code.http.utils.ServerException;
 import com.wangxing.code.view.CommonLayout;
 import com.zhouyou.recyclerview.XRecyclerView;
+import com.zhouyou.recyclerview.refresh.BaseRefreshHeader;
 import com.zhouyou.recyclerview.refresh.ProgressStyle;
 
 import java.util.ArrayList;
@@ -45,6 +46,10 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
     }
 
     public void initLoadView(CommonLayout commonLayout, XRecyclerView recyclerView, BaseQuickAdapter<T> adapter) {
+        initLoadView(commonLayout, recyclerView, adapter, null);
+    }
+
+    public void initLoadView(CommonLayout commonLayout, XRecyclerView recyclerView, BaseQuickAdapter<T> adapter, BaseRefreshHeader refreshHeader) {
         LoadingMoreFooter footer = new LoadingMoreFooter(mContext);
         footer.setProgressStyle(ProgressStyle.TriangleSkewSpin);
         mCommonLayout = commonLayout;
@@ -53,7 +58,11 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
         mRecyclerView.setLoadingMoreFooter(footer);
         mRecyclerView.setLoadingMoreEnabled(true);
         mRecyclerView.setLoadingListener(this);
-        mRecyclerView.setRefreshProgressStyle(ProgressStyle.Pacman);
+        if (refreshHeader != null) {
+            mRecyclerView.setRefreshHeader(refreshHeader);
+        } else {
+            mRecyclerView.setRefreshProgressStyle(ProgressStyle.Pacman);
+        }
         mRecyclerView.setFootViewText("努力加载中...", "没有更多数据");
         mCommonLayout.setContentView(recyclerView);
         reload();

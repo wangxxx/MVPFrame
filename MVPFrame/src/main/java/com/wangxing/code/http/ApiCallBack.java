@@ -132,8 +132,8 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
 //            ex.message = "证书验证失败";
         }//其它
         else {
-            _onError(new ServerException(ServerException.ERROR_NO_DATA, "状态异常"));
-            ToastUtil.showShort(mContext, "状态异常");
+            _onError(new ServerException(ServerException.ERROR_NO_DATA, "网络状态异常"));
+            ToastUtil.showShort(mContext, "网络状态异常");
         }
     }
 
