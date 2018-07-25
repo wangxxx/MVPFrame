@@ -6,6 +6,7 @@ import android.net.ParseException;
 
 import com.google.gson.JsonParseException;
 import com.wangxing.code.FrameConst;
+import com.wangxing.code.R;
 import com.wangxing.code.http.utils.ApiResult;
 import com.wangxing.code.http.utils.ServerException;
 import com.wangxing.code.utils.NetWorkUtil;
@@ -46,11 +47,11 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
     }
 
     public ApiCallBack(Context context) {
-        this(context, "Loading...", false);
+        this(context, context.getString(R.string.call_back_loading), false);
     }
 
     public ApiCallBack(Context context, boolean showDialog) {
-        this(context, "Loading...", showDialog);
+        this(context, context.getString(R.string.call_back_loading), showDialog);
     }
 
     @Override
@@ -63,7 +64,7 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
         super.onStart();
 
         if (!NetWorkUtil.isNetConnected(FrameConst.getContext())) {
-            ToastUtil.showShort(mContext, "当前网络不可用，请检查网络情况");
+            ToastUtil.showShort(mContext, R.string.call_back_no_network);
             onCompleted();
             return;
         }
@@ -96,7 +97,7 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
         e.printStackTrace();
         //网络
         if (!NetWorkUtil.isNetConnected(FrameConst.getContext())) {
-            ToastUtil.showShort(mContext, "网络开小差了~~~");
+            ToastUtil.showShort(mContext, R.string.call_back_no_network_1);
         }
         //服务器
         else if (e instanceof ServerException) {
@@ -114,26 +115,26 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
                 case BAD_GATEWAY:
                 case SERVICE_UNAVAILABLE:
                 default:
-                    _onError(new ServerException(String.valueOf(httpException.code()), "网络请求错误"));
-                    ToastUtil.showShort(mContext, "网络请求错误");
+                    _onError(new ServerException(String.valueOf(httpException.code()), mContext.getString(R.string.call_back_requext_error)));
+                    ToastUtil.showShort(mContext, R.string.call_back_requext_error);
                     break;
             }
         } else if (e instanceof JsonParseException
                 || e instanceof JSONException
                 || e instanceof ParseException) {
-            _onError(new ServerException(ServerException.ERROR_NO_DATA, "数据解析异常"));
-            ToastUtil.showShort(mContext, "数据解析异常");
+            _onError(new ServerException(ServerException.ERROR_NO_DATA, mContext.getString(R.string.call_back_requext_json_error)));
+            ToastUtil.showShort(mContext, R.string.call_back_requext_json_error);
         } else if (e instanceof ConnectException
                 || e instanceof SocketTimeoutException) {
-            _onError(new ServerException(ServerException.ERROR_NO_DATA, "网络连接错误"));
-            ToastUtil.showShort(mContext, "网络连接错误");
+            _onError(new ServerException(ServerException.ERROR_NO_DATA, mContext.getString(R.string.call_back_requext_connect_error)));
+            ToastUtil.showShort(mContext, R.string.call_back_requext_connect_error);
         } else if (e instanceof javax.net.ssl.SSLHandshakeException) {
 //            ex = new ResponeThrowable(e, ERROR.SSL_ERROR);
 //            ex.message = "证书验证失败";
         }//其它
         else {
-            _onError(new ServerException(ServerException.ERROR_NO_DATA, "网络状态异常"));
-            ToastUtil.showShort(mContext, "网络状态异常");
+            _onError(new ServerException(ServerException.ERROR_NO_DATA, mContext.getString(R.string.call_back_requext_status)));
+            ToastUtil.showShort(mContext, R.string.call_back_requext_status);
         }
     }
 
