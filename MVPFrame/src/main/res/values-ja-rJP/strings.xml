@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MVPFrame</string>
     <string name="common_exit_app">再按一次退出应用</string>
-    <string name="common_money">￥%1$s</string>
-    <string name="common_count">x%1$s</string>
-    <string name="common_total_price">合计：￥%1$s</string>
     <string name="common_connection_error">网络连接出错，请检查设置</string>
+    <string name="call_back_no_network">当前网络不可用，请检查网络情况</string>
+    <string name="call_back_no_network_1">网络又调皮了~~~</string>
+    <string name="call_back_loading">加载中...</string>
+    <string name="call_back_requext_error">网络请求错误</string>
+    <string name="call_back_requext_status">网络状态异常</string>
+    <string name="call_back_requext_connect_error">网络请求错误</string>
+    <string name="call_back_requext_json_error">数据解析异常</string>
     <string name="common_dialog_title">温馨提示</string>
     <string name="common_dialog_cancel">取消</string>
     <string name="common_dialog_confirm">确定</string>
