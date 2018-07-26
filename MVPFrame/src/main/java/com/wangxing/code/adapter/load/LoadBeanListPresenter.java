@@ -51,7 +51,7 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
         mRecyclerView.setLoadingMoreEnabled(true);
         mRecyclerView.setLoadingListener(this);
         mRecyclerView.setRefreshProgressStyle(ProgressStyle.Pacman);
-        mRecyclerView.setFootViewText("努力加载中...", "没有更多数据");
+        mRecyclerView.setFootViewText(mContext.getString(com.wangxing.code.R.string.call_back_loading_more),  mContext.getString(com.wangxing.code.R.string.common_no_more_date));
         mCommonLayout.setContentView(recyclerView);
         reload();
     }
@@ -135,7 +135,7 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                     if (exception.mErrorCode.equals(ServerException.ERROR_NO_DATA)) {
                         mRecyclerView.setNoMore(true);//没有下一页
                     } else {
-                        mRecyclerView.setFootViewText("努力加载中...", "加载失败");
+                        mRecyclerView.setFootViewText(mContext.getString(com.wangxing.code.R.string.call_back_loading_more), mContext.getString(com.wangxing.code.R.string.call_back_loading_failed));
                         mRecyclerView.setNoMore(true);
                     }
                 }

@@ -1,6 +1,9 @@
 package com.wangxing.code.adapter.load;
 
 
+import android.content.Context;
+
+import com.wangxing.code.R;
 import com.wangxing.code.adapter.BaseQuickAdapter;
 import com.wangxing.code.adapter.LoadingMoreFooter;
 import com.wangxing.code.base.BasePresenter;
@@ -63,7 +66,7 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
         } else {
             mRecyclerView.setRefreshProgressStyle(ProgressStyle.Pacman);
         }
-        mRecyclerView.setFootViewText("努力加载中...", "没有更多数据");
+        mRecyclerView.setFootViewText(mContext.getString(com.wangxing.code.R.string.call_back_loading_more), mContext.getString(com.wangxing.code.R.string.common_no_more_date));
         mCommonLayout.setContentView(recyclerView);
         reload();
     }
@@ -143,7 +146,7 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                     if (exception.mErrorCode.equals(ServerException.ERROR_NO_DATA)) {
                         mRecyclerView.setNoMore(true);//没有下一页
                     } else {
-                        mRecyclerView.setFootViewText("努力加载中...", "加载失败");
+                        mRecyclerView.setFootViewText(mContext.getString(com.wangxing.code.R.string.call_back_loading_more), mContext.getString(com.wangxing.code.R.string.call_back_loading_failed));
                         mRecyclerView.setNoMore(true);
                     }
                 }

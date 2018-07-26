@@ -10,7 +10,7 @@
     <string name="call_back_requext_connect_error">网络请求错误</string>
     <string name="call_back_requext_json_error">数据解析异常</string>
     <string name="common_dialog_title">温馨提示</string>
-    <string name="common_dialog_cancel">取消</string>
-    <string name="common_dialog_confirm">确定</string>
+    <string name="common_dialog_cancel">Cancel</string>
+    <string name="common_dialog_confirm">Confirm</string>
     <string name="common_no_next">我的有底线的~</string>
 </resources>
