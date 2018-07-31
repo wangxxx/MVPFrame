@@ -75,12 +75,7 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
         mSwipeRefreshLayout = refreshLayout;
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setEnabled(false);
-            mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    reload();
-                }
-            });
+
         }
     }
 

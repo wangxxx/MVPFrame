@@ -77,12 +77,6 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
         mSwipeRefreshLayout = refreshLayout;
         if (mSwipeRefreshLayout != null) {
             mSwipeRefreshLayout.setEnabled(false);
-            mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-                @Override
-                public void onRefresh() {
-                    reload();
-                }
-            });
         }
     }
 
