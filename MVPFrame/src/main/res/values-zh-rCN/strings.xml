@@ -12,7 +12,7 @@
     <string name="call_back_requext_connect_error">网络请求错误</string>
     <string name="call_back_requext_json_error">数据解析异常</string>
     <string name="call_back_connection_failed">服务器连接失败</string>
-    <string name="call_back_network_error">网络错误 %1$ds</string>
+    <string name="call_back_network_error">网络错误 %1$d</string>
     <string name="common_dialog_title">温馨提示</string>
     <string name="common_dialog_cancel">取消</string>
     <string name="common_dialog_confirm">确定</string>
