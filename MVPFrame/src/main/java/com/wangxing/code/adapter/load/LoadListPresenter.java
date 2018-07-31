@@ -1,9 +1,8 @@
 package com.wangxing.code.adapter.load;
 
 
-import android.content.Context;
+import android.support.v4.widget.SwipeRefreshLayout;
 
-import com.wangxing.code.R;
 import com.wangxing.code.adapter.BaseQuickAdapter;
 import com.wangxing.code.adapter.LoadingMoreFooter;
 import com.wangxing.code.base.BasePresenter;
@@ -36,6 +35,8 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
 
     private ApiCallBack<List<T>> mCallBack;
 
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+
     public LoadListPresenter() {
     }
 
@@ -49,10 +50,14 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
     }
 
     public void initLoadView(CommonLayout commonLayout, XRecyclerView recyclerView, BaseQuickAdapter<T> adapter) {
-        initLoadView(commonLayout, recyclerView, adapter, null);
+        initLoadView(commonLayout, recyclerView, adapter, null, null);
     }
 
-    public void initLoadView(CommonLayout commonLayout, XRecyclerView recyclerView, BaseQuickAdapter<T> adapter, BaseRefreshHeader refreshHeader) {
+    public void initLoadView(CommonLayout commonLayout, SwipeRefreshLayout refreshLayout, XRecyclerView recyclerView, BaseQuickAdapter<T> adapter) {
+        initLoadView(commonLayout, recyclerView, adapter, null, refreshLayout);
+    }
+
+    public void initLoadView(CommonLayout commonLayout, XRecyclerView recyclerView, BaseQuickAdapter<T> adapter, BaseRefreshHeader refreshHeader, SwipeRefreshLayout refreshLayout) {
         LoadingMoreFooter footer = new LoadingMoreFooter(mContext);
         footer.setProgressStyle(ProgressStyle.TriangleSkewSpin);
         mCommonLayout = commonLayout;
@@ -69,6 +74,16 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
         mRecyclerView.setFootViewText(mContext.getString(com.wangxing.code.R.string.call_back_loading_more), mContext.getString(com.wangxing.code.R.string.common_no_more_date));
         mCommonLayout.setContentView(recyclerView);
         reload();
+        mSwipeRefreshLayout = refreshLayout;
+        if (mSwipeRefreshLayout != null) {
+            mSwipeRefreshLayout.setEnabled(false);
+            mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    reload();
+                }
+            });
+        }
     }
 
     private void reload() {
@@ -100,6 +115,9 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                 if (bean == null || bean == null) {
                     if (mPage == 1) {
                         mCommonLayout.showEmpty();
+                        if (mSwipeRefreshLayout != null) {
+                            mSwipeRefreshLayout.setEnabled(true);
+                        }
                     } else {
                         mRecyclerView.setNoMore(true);//没有下一页
                     }
@@ -115,6 +133,9 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                         mCommonLayout.showContent();
                     } else {
                         mCommonLayout.showEmpty();
+                        if (mSwipeRefreshLayout != null) {
+                            mSwipeRefreshLayout.setEnabled(true);
+                        }
                     }
                 }
 
@@ -131,6 +152,14 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                 if (mRecyclerView.isRefreshing()) {
                     mRecyclerView.refreshComplete();
                 }
+
+                if (mSwipeRefreshLayout != null) {
+                    if (mSwipeRefreshLayout.isRefreshing()) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        mSwipeRefreshLayout.setEnabled(false);
+                    }
+                }
+
             }
 
 
@@ -139,8 +168,14 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                 if (mPage == 1) {
                     if (!exception.mErrorCode.equals(ServerException.ERROR_NO_DATA)) {
                         mCommonLayout.showError();
+                        if (mSwipeRefreshLayout != null) {
+                            mSwipeRefreshLayout.setEnabled(true);
+                        }
                     } else {
                         mCommonLayout.showEmpty();
+                        if (mSwipeRefreshLayout != null) {
+                            mSwipeRefreshLayout.setEnabled(true);
+                        }
                     }
                 } else {
                     if (exception.mErrorCode.equals(ServerException.ERROR_NO_DATA)) {
@@ -152,6 +187,11 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                 }
                 if (mRecyclerView.isRefreshing()) {
                     mRecyclerView.refreshComplete();
+                }
+                if (mSwipeRefreshLayout != null) {
+                    if (mSwipeRefreshLayout.isRefreshing()) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
                 }
             }
         };

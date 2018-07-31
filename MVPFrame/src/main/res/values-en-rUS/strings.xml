@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="common_exit_app">再按一次退出应用</string>
-    <string name="common_connection_error">网络连接出错，请检查设置</string>
-    <string name="call_back_no_network">当前网络不可用，请检查网络情况</string>
-    <string name="call_back_no_network_1">网络又调皮了~~~</string>
-    <string name="call_back_loading">加载中...</string>
-    <string name="call_back_loading_more">努力加载中...</string>
-    <string name="call_back_loading_failed">加载失败</string>
-    <string name="call_back_requext_error">网络请求错误</string>
-    <string name="call_back_requext_status">网络状态异常</string>
-    <string name="call_back_requext_connect_error">网络请求错误</string>
-    <string name="call_back_requext_json_error">数据解析异常</string>
-    <string name="common_dialog_title">温馨提示</string>
-    <string name="common_dialog_cancel">取消</string>
-    <string name="common_dialog_confirm">确定</string>
-    <string name="common_no_more_date">无更多数据</string>
-    <string name="common_no_next">我的有底线的~</string>
+    <string name="common_exit_app">Tap once more to quit</string>
+    <string name="common_connection_error">Connection error, Please check settings</string>
+    <string name="call_back_no_network">Current network is unavailable, please check your connection</string>
+    <string name="call_back_no_network_1">The network is naughty again~~~</string>
+    <string name="call_back_loading">Loading...</string>
+    <string name="call_back_loading_more">Hard loading...</string>
+    <string name="call_back_loading_failed">Failed to laod</string>
+    <string name="call_back_requext_error">Network request error</string>
+    <string name="call_back_requext_status">Connection error</string>
+    <string name="call_back_requext_connect_error">Network request error</string>
+    <string name="call_back_requext_json_error">Data analysis error</string>
+    <string name="common_dialog_title">Friendly Reminder</string>
+    <string name="common_dialog_cancel">Cancel</string>
+    <string name="common_dialog_confirm">Confirm</string>
+    <string name="common_no_more_date">No more data</string>
+    <string name="common_no_next">I have a bottom line~</string>
 </resources>

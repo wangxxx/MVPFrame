@@ -10,6 +10,7 @@ import com.wangxing.code.utils.ToastUtil;
 public class ServerException extends Exception {
 
     public static final String ERROR_NO_DATA = "400";
+    public static final String ERROR_EXCEPTION = "401";
 
     public String mErrorCode;
     public String mErrorMsg;

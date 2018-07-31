@@ -1,5 +1,7 @@
 package com.wangxing.code.adapter.load;
 
+import android.support.v4.widget.SwipeRefreshLayout;
+
 import com.wangxing.code.adapter.BaseQuickAdapter;
 import com.wangxing.code.adapter.LoadingMoreFooter;
 import com.wangxing.code.base.BasePresenter;
@@ -7,6 +9,7 @@ import com.wangxing.code.http.ApiCallBack;
 import com.wangxing.code.http.utils.ServerException;
 import com.wangxing.code.view.CommonLayout;
 import com.zhouyou.recyclerview.XRecyclerView;
+import com.zhouyou.recyclerview.refresh.BaseRefreshHeader;
 import com.zhouyou.recyclerview.refresh.ProgressStyle;
 
 import java.util.ArrayList;
@@ -29,6 +32,8 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
 
     private ApiCallBack<T> mCallBack;
 
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+
     public LoadBeanListPresenter() {
     }
 
@@ -42,6 +47,15 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
     }
 
     public void initLoadView(CommonLayout commonLayout, XRecyclerView recyclerView, BaseQuickAdapter<K> adapter) {
+        initLoadView(commonLayout, recyclerView, adapter, null, null);
+    }
+
+    public void initLoadView(CommonLayout commonLayout, SwipeRefreshLayout refreshLayout, XRecyclerView recyclerView, BaseQuickAdapter<K> adapter) {
+        initLoadView(commonLayout, recyclerView, adapter, null, refreshLayout);
+    }
+
+
+    public void initLoadView(CommonLayout commonLayout, XRecyclerView recyclerView, BaseQuickAdapter<K> adapter, BaseRefreshHeader refreshHeader, SwipeRefreshLayout refreshLayout) {
         LoadingMoreFooter footer = new LoadingMoreFooter(mContext);
         footer.setProgressStyle(ProgressStyle.TriangleSkewSpin);
         mCommonLayout = commonLayout;
@@ -50,10 +64,24 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
         mRecyclerView.setLoadingMoreFooter(footer);
         mRecyclerView.setLoadingMoreEnabled(true);
         mRecyclerView.setLoadingListener(this);
-        mRecyclerView.setRefreshProgressStyle(ProgressStyle.Pacman);
-        mRecyclerView.setFootViewText(mContext.getString(com.wangxing.code.R.string.call_back_loading_more),  mContext.getString(com.wangxing.code.R.string.common_no_more_date));
+        if (refreshHeader != null) {
+            mRecyclerView.setRefreshHeader(refreshHeader);
+        } else {
+            mRecyclerView.setRefreshProgressStyle(ProgressStyle.Pacman);
+        }
+        mRecyclerView.setFootViewText(mContext.getString(com.wangxing.code.R.string.call_back_loading_more), mContext.getString(com.wangxing.code.R.string.common_no_more_date));
         mCommonLayout.setContentView(recyclerView);
         reload();
+        mSwipeRefreshLayout = refreshLayout;
+        if (mSwipeRefreshLayout != null) {
+            mSwipeRefreshLayout.setEnabled(false);
+            mSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    reload();
+                }
+            });
+        }
     }
 
     private void reload() {
@@ -87,6 +115,9 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                 if (bean == null || bean.getList() == null) {
                     if (mPage == 1) {
                         mCommonLayout.showEmpty();
+                        if (mSwipeRefreshLayout != null) {
+                            mSwipeRefreshLayout.setEnabled(true);
+                        }
                     } else {
                         mRecyclerView.setNoMore(true);//没有下一页
                     }
@@ -102,6 +133,9 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                         mCommonLayout.showContent();
                     } else {
                         mCommonLayout.showEmpty();
+                        if (mSwipeRefreshLayout != null) {
+                            mSwipeRefreshLayout.setEnabled(true);
+                        }
                     }
                 }
 
@@ -120,6 +154,13 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                     mRecyclerView.refreshComplete();
                 }
 
+                if (mSwipeRefreshLayout != null) {
+                    if (mSwipeRefreshLayout.isRefreshing()) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                        mSwipeRefreshLayout.setEnabled(false);
+                    }
+                }
+
             }
 
 
@@ -128,8 +169,14 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                 if (mPage == 1) {
                     if (!exception.mErrorCode.equals(ServerException.ERROR_NO_DATA)) {
                         mCommonLayout.showError();
+                        if (mSwipeRefreshLayout != null) {
+                            mSwipeRefreshLayout.setEnabled(true);
+                        }
                     } else {
                         mCommonLayout.showEmpty();
+                        if (mSwipeRefreshLayout != null) {
+                            mSwipeRefreshLayout.setEnabled(true);
+                        }
                     }
                 } else {
                     if (exception.mErrorCode.equals(ServerException.ERROR_NO_DATA)) {
@@ -142,6 +189,12 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                 if (mRecyclerView.isRefreshing()) {
                     mRecyclerView.refreshComplete();
                 }
+                if (mSwipeRefreshLayout != null) {
+                    if (mSwipeRefreshLayout.isRefreshing()) {
+                        mSwipeRefreshLayout.setRefreshing(false);
+                    }
+                }
+
             }
         };
 

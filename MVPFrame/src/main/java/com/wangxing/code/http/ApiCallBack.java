@@ -2,23 +2,14 @@ package com.wangxing.code.http;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.ParseException;
 
-import com.google.gson.JsonParseException;
 import com.wangxing.code.FrameConst;
-import com.wangxing.code.R;
 import com.wangxing.code.http.utils.ApiResult;
 import com.wangxing.code.http.utils.ServerException;
 import com.wangxing.code.utils.NetWorkUtil;
 import com.wangxing.code.utils.ToastUtil;
 import com.wangxing.code.view.LoadingDialog;
 
-import org.json.JSONException;
-
-import java.net.ConnectException;
-import java.net.SocketTimeoutException;
-
-import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 
 /**
@@ -92,49 +83,15 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
 
     @Override
     public void onError(Throwable e) {
+
         if (mShowDialog)
             LoadingDialog.cancelDialogForLoading();
         e.printStackTrace();
         //网络
         if (!NetWorkUtil.isNetConnected(FrameConst.getContext())) {
             ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_no_network_1));
-        }
-        //服务器
-        else if (e instanceof ServerException) {
-            _onError((ServerException) e);
-        }
-        if (e instanceof HttpException) {
-            HttpException httpException = (HttpException) e;
-            switch (httpException.code()) {
-                case UNAUTHORIZED:
-                case FORBIDDEN:
-                case NOT_FOUND:
-                case REQUEST_TIMEOUT:
-                case GATEWAY_TIMEOUT:
-                case INTERNAL_SERVER_ERROR:
-                case BAD_GATEWAY:
-                case SERVICE_UNAVAILABLE:
-                default:
-                    _onError(new ServerException(String.valueOf(httpException.code()), mContext.getString(com.wangxing.code.R.string.call_back_requext_error)));
-                    ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_requext_error));
-                    break;
-            }
-        } else if (e instanceof JsonParseException
-                || e instanceof JSONException
-                || e instanceof ParseException) {
-            _onError(new ServerException(ServerException.ERROR_NO_DATA, mContext.getString(com.wangxing.code.R.string.call_back_requext_json_error)));
-            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_requext_json_error));
-        } else if (e instanceof ConnectException
-                || e instanceof SocketTimeoutException) {
-            _onError(new ServerException(ServerException.ERROR_NO_DATA, mContext.getString(com.wangxing.code.R.string.call_back_requext_connect_error)));
-            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_requext_connect_error));
-        } else if (e instanceof javax.net.ssl.SSLHandshakeException) {
-//            ex = new ResponeThrowable(e, ERROR.SSL_ERROR);
-//            ex.message = "证书验证失败";
-        }//其它
-        else {
-            _onError(new ServerException(ServerException.ERROR_NO_DATA, mContext.getString(com.wangxing.code.R.string.call_back_requext_status)));
-            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_requext_status));
+        } else {
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
         }
     }
 
