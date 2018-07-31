@@ -126,7 +126,9 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                             mPageSize = 10;
                         }
                         mCommonLayout.showContent();
-                        mSwipeRefreshLayout.setEnabled(false);
+                        if (mSwipeRefreshLayout != null) {
+                            mSwipeRefreshLayout.setEnabled(false);
+                        }
                     } else {
                         mCommonLayout.showEmpty();
                         if (mSwipeRefreshLayout != null) {

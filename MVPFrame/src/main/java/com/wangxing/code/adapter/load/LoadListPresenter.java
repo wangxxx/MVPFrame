@@ -125,7 +125,9 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                             mPageSize = 10;
                         }
                         mCommonLayout.showContent();
-                        mSwipeRefreshLayout.setEnabled(false);
+                        if (mSwipeRefreshLayout != null) {
+                            mSwipeRefreshLayout.setEnabled(false);
+                        }
                     } else {
                         mCommonLayout.showEmpty();
                         if (mSwipeRefreshLayout != null) {
