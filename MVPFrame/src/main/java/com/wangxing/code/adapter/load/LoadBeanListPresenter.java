@@ -131,6 +131,7 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                             mPageSize = 10;
                         }
                         mCommonLayout.showContent();
+                        mSwipeRefreshLayout.setEnabled(false);
                     } else {
                         mCommonLayout.showEmpty();
                         if (mSwipeRefreshLayout != null) {
@@ -157,7 +158,6 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                 if (mSwipeRefreshLayout != null) {
                     if (mSwipeRefreshLayout.isRefreshing()) {
                         mSwipeRefreshLayout.setRefreshing(false);
-                        mSwipeRefreshLayout.setEnabled(false);
                     }
                 }
 
