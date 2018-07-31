@@ -2,9 +2,7 @@ package com.wangxing.code.http;
 
 import android.app.Activity;
 import android.content.Context;
-import android.net.ParseException;
 
-import com.google.gson.JsonParseException;
 import com.wangxing.code.FrameConst;
 import com.wangxing.code.http.utils.ApiResult;
 import com.wangxing.code.http.utils.ServerException;
@@ -110,9 +108,7 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
         } else if (e instanceof ConnectException) {
             ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.common_connection_error));
             _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
-        } else if (e instanceof JsonParseException
-                || e instanceof JSONException
-                || e instanceof ParseException) {
+        } else if (e instanceof JSONException) {
             ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_requext_json_error));
             _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
         } else if (e instanceof IOException) {
