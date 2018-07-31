@@ -91,13 +91,13 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
         //网络
         if (!NetWorkUtil.isNetConnected(FrameConst.getContext())) {
             ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_no_network_1));
-            _onError(new ServerException(ServerException.ERROR_EXCEPTION, mContext.getString(com.wangxing.code.R.string.call_back_no_network_1)));
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
         } else if (e instanceof ServerException) {
             ToastUtil.showShort(mContext, ((ServerException) e).mErrorMsg);
             _onError((ServerException) e);
         } else {
-            ToastUtil.showShort(mContext, e.toString());
-            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
+            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_requext_connect_error));
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION,e.toString()));
         }
     }
 
