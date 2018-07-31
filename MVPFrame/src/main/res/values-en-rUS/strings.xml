@@ -13,6 +13,8 @@
     <string name="call_back_requext_json_error">Data analysis error</string>
     <string name="common_dialog_title">Friendly Reminder</string>
     <string name="common_dialog_cancel">Cancel</string>
+    <string name="call_back_connection_failed">Server connection failure</string>
+    <string name="call_back_network_error">Network error %1$ds</string>
     <string name="common_dialog_confirm">Confirm</string>
     <string name="common_no_more_date">No more data</string>
     <string name="common_no_next">I have a bottom line~</string>

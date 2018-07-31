@@ -13,6 +13,8 @@
     <string name="call_back_requext_json_error">データ解析が異常</string>
     <string name="common_dialog_title">ご注意</string>
     <string name="common_dialog_cancel">取消</string>
+    <string name="call_back_network_error">ネットワークエラー %1$ds</string>
+    <string name="call_back_connection_failed">サーバーの接続失敗</string>
     <string name="common_dialog_confirm">確定</string>
     <string name="common_no_more_date">これ以上のデータがありません</string>
     <string name="common_no_next">我的有底线的~</string>

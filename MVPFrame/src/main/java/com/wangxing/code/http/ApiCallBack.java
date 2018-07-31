@@ -2,7 +2,9 @@ package com.wangxing.code.http;
 
 import android.app.Activity;
 import android.content.Context;
+import android.net.ParseException;
 
+import com.google.gson.JsonParseException;
 import com.wangxing.code.FrameConst;
 import com.wangxing.code.http.utils.ApiResult;
 import com.wangxing.code.http.utils.ServerException;
@@ -10,6 +12,12 @@ import com.wangxing.code.utils.NetWorkUtil;
 import com.wangxing.code.utils.ToastUtil;
 import com.wangxing.code.view.LoadingDialog;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+import java.net.ConnectException;
+
+import retrofit2.adapter.rxjava.HttpException;
 import rx.Subscriber;
 
 /**
@@ -95,9 +103,21 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
         } else if (e instanceof ServerException) {
             ToastUtil.showShort(mContext, ((ServerException) e).mErrorMsg);
             _onError((ServerException) e);
-        } else {
-            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_requext_connect_error));
-            _onError(new ServerException(ServerException.ERROR_EXCEPTION,e.toString()));
+        } else if (e instanceof HttpException) {
+            int code = ((HttpException) e).code();
+            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_network_error, code));
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
+        } else if (e instanceof ConnectException) {
+            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.common_connection_error));
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
+        } else if (e instanceof JsonParseException
+                || e instanceof JSONException
+                || e instanceof ParseException) {
+            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_requext_json_error));
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
+        } else if (e instanceof IOException) {
+            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_connection_failed));
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
         }
     }
 
