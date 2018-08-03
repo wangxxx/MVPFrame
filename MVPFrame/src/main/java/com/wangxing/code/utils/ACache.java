@@ -64,7 +64,7 @@ public class ACache {
     private ACacheManager mCache;
 
     public static ACache get(Context ctx) {
-        return get(ctx, "WisdomAcache");
+        return get(ctx, "QFPayCache");
     }
 
     public static ACache get(Context ctx, String cacheName) {
@@ -77,7 +77,7 @@ public class ACache {
     }
 
     public static ACache get(Context ctx, long max_zise, int max_count) {
-        File f = new File(ctx.getFilesDir(), "WisdomAcache");
+        File f = new File(ctx.getFilesDir(), "QFPayCache");
         return get(f, max_zise, max_count);
     }
 

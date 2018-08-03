@@ -96,24 +96,24 @@ public abstract class ApiCallBack<T> extends Subscriber<ApiResult<T>> {
         e.printStackTrace();
         //网络
         if (!NetWorkUtil.isNetConnected(FrameConst.getContext())) {
-            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_no_network_1));
-            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
+//            ToastUtil.showShort(mContext, com.wangxing.code.R.string.call_back_no_network_1);
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION, mContext.getString(com.wangxing.code.R.string.call_back_no_network_1)));
         } else if (e instanceof ServerException) {
-            ToastUtil.showShort(mContext, ((ServerException) e).mErrorMsg);
+//            ToastUtil.showShort(mContext, ((ServerException) e).mErrorMsg);
             _onError((ServerException) e);
         } else if (e instanceof HttpException) {
             int code = ((HttpException) e).code();
-            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_network_error, code));
-            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
+//            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_network_error, code));
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION,mContext.getString(com.wangxing.code.R.string.call_back_network_error,code)));
         } else if (e instanceof ConnectException) {
-            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.common_connection_error));
-            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
+//            ToastUtil.showShort(mContext, com.wangxing.code.R.string.common_connection_error);
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION,  mContext.getString(com.wangxing.code.R.string.common_connection_error)));
         } else if (e instanceof JSONException) {
-            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_requext_json_error));
-            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
+//            ToastUtil.showShort(mContext,com.wangxing.code.R.string.call_back_requext_json_error);
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION, mContext.getString(com.wangxing.code.R.string.call_back_requext_json_error)));
         } else if (e instanceof IOException) {
-            ToastUtil.showShort(mContext, mContext.getString(com.wangxing.code.R.string.call_back_connection_failed));
-            _onError(new ServerException(ServerException.ERROR_EXCEPTION, e.toString()));
+//            ToastUtil.showShort(mContext, com.wangxing.code.R.string.call_back_connection_failed);
+            _onError(new ServerException(ServerException.ERROR_EXCEPTION, mContext.getString(com.wangxing.code.R.string.call_back_connection_failed)));
         }
     }
 
