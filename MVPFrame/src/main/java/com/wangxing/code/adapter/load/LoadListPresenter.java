@@ -81,7 +81,7 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
     }
 
     private void reload() {
-
+        mRecyclerView.reset();
         mAdapter.setListAll(new ArrayList<T>());
         mPage = 1;
         mPageSize = 10;

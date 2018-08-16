@@ -80,7 +80,7 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
     }
 
     private void reload() {
-
+        mRecyclerView.reset();
         mAdapter.setListAll(new ArrayList<K>());
         mPage = 1;
         mPageSize = 10;
