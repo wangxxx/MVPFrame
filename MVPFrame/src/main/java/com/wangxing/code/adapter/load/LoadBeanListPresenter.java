@@ -8,6 +8,7 @@ import com.wangxing.code.base.BasePresenter;
 import com.wangxing.code.http.ApiCallBack;
 import com.wangxing.code.http.utils.ServerException;
 import com.wangxing.code.view.CommonLayout;
+import com.wangxing.code.view.LoadingDialog;
 import com.zhouyou.recyclerview.XRecyclerView;
 import com.zhouyou.recyclerview.refresh.BaseRefreshHeader;
 import com.zhouyou.recyclerview.refresh.ProgressStyle;
@@ -158,6 +159,8 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                     }
                 }
 
+                LoadingDialog.cancelDialogForLoading();
+
             }
 
 
@@ -192,6 +195,8 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                     }
                 }
 
+                LoadingDialog.cancelDialogForLoading();
+
             }
         };
 
@@ -208,6 +213,7 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
     //加载更多
     @Override
     public void onLoadMore() {
+        LoadingDialog.showDialogForLoading(mContext, mContext.getString(com.wangxing.code.R.string.call_back_loading),false);
         loadMore();
     }
 }

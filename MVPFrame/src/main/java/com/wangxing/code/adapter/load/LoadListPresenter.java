@@ -1,6 +1,7 @@
 package com.wangxing.code.adapter.load;
 
 
+import android.app.Activity;
 import android.support.v4.widget.SwipeRefreshLayout;
 
 import com.wangxing.code.adapter.BaseQuickAdapter;
@@ -9,6 +10,7 @@ import com.wangxing.code.base.BasePresenter;
 import com.wangxing.code.http.ApiCallBack;
 import com.wangxing.code.http.utils.ServerException;
 import com.wangxing.code.view.CommonLayout;
+import com.wangxing.code.view.LoadingDialog;
 import com.zhouyou.recyclerview.XRecyclerView;
 import com.zhouyou.recyclerview.refresh.BaseRefreshHeader;
 import com.zhouyou.recyclerview.refresh.ProgressStyle;
@@ -156,6 +158,8 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                     }
                 }
 
+                LoadingDialog.cancelDialogForLoading();
+
             }
 
 
@@ -189,6 +193,7 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                         mSwipeRefreshLayout.setRefreshing(false);
                     }
                 }
+                LoadingDialog.cancelDialogForLoading();
             }
         };
 
@@ -205,6 +210,7 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
     //加载更多
     @Override
     public void onLoadMore() {
+        LoadingDialog.showDialogForLoading(mContext, mContext.getString(com.wangxing.code.R.string.call_back_loading),false);
         loadMore();
     }
 }

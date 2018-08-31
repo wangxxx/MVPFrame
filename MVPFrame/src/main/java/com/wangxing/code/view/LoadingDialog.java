@@ -2,6 +2,7 @@ package com.wangxing.code.view;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,7 +31,7 @@ public class LoadingDialog {
      * @param msg        对话框显示内容
      * @param cancelable 对话框是否可以取消
      */
-    public static Dialog showDialogForLoading(Activity context, String msg, boolean cancelable) {
+    public static Dialog showDialogForLoading(Context context, String msg, boolean cancelable) {
         View view = LayoutInflater.from(context).inflate(com.wangxing.code.R.layout.dialog_loading, null);
         TextView loadingText = (TextView) view.findViewById(com.wangxing.code.R.id.id_tv_loading_dialog_text);
         ProgressBar progressBar = (ProgressBar) view.findViewById(R.id.callback_progress);
