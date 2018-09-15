@@ -1,6 +1,7 @@
 package com.wangxing.code.view.utils;
 
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.view.Gravity;
@@ -192,4 +193,11 @@ public class ToolbarUtil implements View.OnClickListener {
         mLeftFl.setEnabled(false);
     }
 
+    public void setTitleStyle(int style) {
+        mTitleTv.setTypeface(Typeface.create(Typeface.DEFAULT, style));
+    }
+
+    public void setTitleStyle(Typeface family, int style) {
+        mTitleTv.setTypeface(Typeface.create(family, style));
+    }
 }

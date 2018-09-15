@@ -1,5 +1,6 @@
 package com.wangxing.code;
 
+import android.graphics.Typeface;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
@@ -43,7 +44,10 @@ public class MainActivity extends BaseActivity {
         ToolbarUtil toolbarUtil = new ToolbarUtil(this);
         toolbarUtil.setLineBackgroundColor(R.color.blue_2c80ba);
         toolbarUtil.setRightText("哈哈哈");
+        toolbarUtil.setLightBackTheme("测试");
         toolbarUtil.setRightTextCompoundDrawables(ContextCompat.getDrawable(this, R.drawable.arrow_down), ToolbarUtil.LEFT);
+        toolbarUtil.setTitleStyle(Typeface.DEFAULT_BOLD,Typeface.BOLD);
+
     }
 
     @Override
