@@ -6,11 +6,11 @@ import android.content.res.Resources;
 public class ImageMeasureUtil {
 
     // banner
-    public static final float BANNER_RATIO = 72 / 35f;
+    public static float BANNER_RATIO = 72 / 35f;
     //首页  banner
     public static final float MAIN_BANNER_SIZE = 750 / 468f;
     //商品详情 banner
-    public static final float PRODUCT_DETAIL_BANNER_SIZE = 750/700f;
+    public static final float PRODUCT_DETAIL_BANNER_SIZE = 750 / 700f;
 
 
     private static int sScreenWidth;
@@ -33,34 +33,17 @@ public class ImageMeasureUtil {
         return measure;
     }
 
-    public static int[] getMainHomeBannerMeasure() {
+    public static void setBannerMeasure(int widthPx, int highPx) {
+        BANNER_RATIO = widthPx / highPx;
+    }
+
+    public static int[] getCustomMeasure(int widthPx, int highPx) {
         int[] measure = new int[2];
         measure[0] = sScreenWidth;
-        measure[1] = Math.round(sScreenWidth / MAIN_BANNER_SIZE);
+        measure[1] = Math.round(sScreenWidth / (widthPx / highPx));
         return measure;
     }
 
-    public static int[] getProductDetailBannerMeasure() {
-        int[] measure = new int[2];
-        measure[0] = sScreenWidth;
-        measure[1] = Math.round(sScreenWidth / PRODUCT_DETAIL_BANNER_SIZE);
-        return measure;
-    }
-
-    public static int[] getVideoMeasure(float ratio) {
-        int[] measure = new int[2];
-        measure[0] = sScreenWidth;
-        measure[1] = Math.round((sScreenWidth - dp24) / ratio);
-        return measure;
-    }
-
-
-    /**
-     * 获取视频宽高缩放
-     */
-    public static int getVideosWHRatio(int video) {
-        return Math.round(video / VIDEO_NARROW);
-    }
 
     public static int getHeight(int width, float radio) {
         return Math.round(width / radio);
