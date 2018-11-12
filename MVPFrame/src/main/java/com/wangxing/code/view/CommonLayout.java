@@ -29,6 +29,7 @@ public class CommonLayout extends FrameLayout {
     private OnClickListener mOnErrorClickListener;
     private ImageView mEmptyImage;
     private ProgressBar mProgressBar;
+    private TextView mProgressText;
     private TextView mErrorTv;
     private static int mEmptyImageId = R.drawable.img_empty_data;
     private static int mLoadingStyleId = R.drawable.loading_dialog_progressbar;
@@ -42,7 +43,7 @@ public class CommonLayout extends FrameLayout {
         }
     }
 
-    public static int getLoadingId(){
+    public static int getLoadingId() {
         return mLoadingStyleId;
     }
 
@@ -109,7 +110,26 @@ public class CommonLayout extends FrameLayout {
         mContentView.setVisibility(GONE);
         setErrorViewVisible(GONE);
         setEmptyViewVisible(GONE);
+        mProgressText.setVisibility(GONE);
         setLoadingViewVisible(VISIBLE);
+    }
+
+    public void showLoading(int progressString) {
+        mContentView.setVisibility(GONE);
+        setErrorViewVisible(GONE);
+        setEmptyViewVisible(GONE);
+        setLoadingViewVisible(VISIBLE);
+        mProgressText.setVisibility(VISIBLE);
+        mProgressText.setText(progressString);
+    }
+
+    public void showLoading(String progressString) {
+        mContentView.setVisibility(GONE);
+        setErrorViewVisible(GONE);
+        setEmptyViewVisible(GONE);
+        setLoadingViewVisible(VISIBLE);
+        mProgressText.setVisibility(VISIBLE);
+        mProgressText.setText(progressString);
     }
 
     public void showEmpty() {
@@ -178,9 +198,9 @@ public class CommonLayout extends FrameLayout {
         } else if (visible == VISIBLE) {
             mLoadingView = mLoadingStub.inflate();
             mProgressBar = mLoadingView.findViewById(R.id.progress_Bar);
+            mProgressText = mLoadingView.findViewById(R.id.progress_text);
             mProgressBar.setIndeterminateDrawable(ContextCompat.getDrawable(getContext(), mLoadingStyleId));
             mLoadingView.setVisibility(VISIBLE);
-
         }
     }
 
