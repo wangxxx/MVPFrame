@@ -202,7 +202,6 @@ public class CommonLayout extends FrameLayout {
             mProgressBar.setIndeterminateDrawable(ContextCompat.getDrawable(getContext(), mLoadingStyleId));
             mLoadingView.setVisibility(VISIBLE);
         }
-
     }
 
     public void setOnErrorClickListener(OnClickListener listener) {
