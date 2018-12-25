@@ -110,8 +110,8 @@ public class CommonLayout extends FrameLayout {
         mContentView.setVisibility(GONE);
         setErrorViewVisible(GONE);
         setEmptyViewVisible(GONE);
-        mProgressText.setVisibility(GONE);
         setLoadingViewVisible(VISIBLE);
+        mProgressText.setVisibility(GONE);
     }
 
     public void showLoading(int progressString) {
