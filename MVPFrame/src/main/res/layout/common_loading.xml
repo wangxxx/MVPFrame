@@ -16,7 +16,6 @@
         android:indeterminateDrawable="@drawable/loading_dialog_progressbar"
         android:indeterminateDuration="100" />
 
-
     <TextView
         android:id="@+id/progress_text"
         android:layout_width="wrap_content"
