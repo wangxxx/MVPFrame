@@ -208,6 +208,7 @@ public class CommonLayout extends FrameLayout {
         mOnErrorClickListener = listener;
     }
 
+
     public void setEmptyImage(int imageId) {
         mEmptyImage.setImageResource(imageId);
     }
