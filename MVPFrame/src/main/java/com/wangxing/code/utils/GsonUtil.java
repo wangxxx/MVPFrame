@@ -12,6 +12,7 @@ import com.google.gson.JsonParser;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -65,13 +66,10 @@ public class GsonUtil {
      * @param cls
      * @return
      */
-    public static <T> List<T> GsonToList(String gsonString, Class<T> cls) {
-        List<T> list = null;
-        if (gson != null) {
-            list = gson.fromJson(gsonString, new TypeToken<List<T>>() {
-            }.getType());
-        }
-        return list;
+    public static <T> List<T> GsonToList(String string, Class<T[]> cls) {
+        Gson gson = new Gson();
+        T[] array = gson.fromJson(string, cls);
+        return Arrays.asList(array);
     }
 
     /**
