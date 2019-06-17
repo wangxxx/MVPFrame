@@ -149,9 +149,9 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                 }
 
                 mPage++;
-                if (mRecyclerView.isRefreshing()) {
-                    mRecyclerView.refreshComplete();
-                }
+//                if (mRecyclerView.isRefreshing()) {
+//                    mRecyclerView.refreshComplete();
+//                }
 
                 if (mSwipeRefreshLayout != null) {
                     if (mSwipeRefreshLayout.isRefreshing()) {
@@ -186,9 +186,9 @@ public abstract class LoadBeanListPresenter<T extends IListResultBean<K>, K, M, 
                         mRecyclerView.setNoMore(true);
                     }
                 }
-                if (mRecyclerView.isRefreshing()) {
-                    mRecyclerView.refreshComplete();
-                }
+//                if (mRecyclerView.isRefreshing()) {
+//                    mRecyclerView.refreshComplete();
+//                }
                 if (mSwipeRefreshLayout != null) {
                     if (mSwipeRefreshLayout.isRefreshing()) {
                         mSwipeRefreshLayout.setRefreshing(false);

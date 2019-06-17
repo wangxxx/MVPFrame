@@ -62,7 +62,7 @@ public class GsonUtil {
      * 转成list
      * 泛型在编译期类型被擦除导致报错
      *
-     * @param gsonString
+     * @param string
      * @param cls
      * @return
      */

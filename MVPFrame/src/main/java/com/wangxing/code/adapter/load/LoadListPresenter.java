@@ -148,9 +148,9 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                 }
 
                 mPage++;
-                if (mRecyclerView.isRefreshing()) {
-                    mRecyclerView.refreshComplete();
-                }
+//                if (mRecyclerView.isRefreshing()) {
+//                    mRecyclerView.refreshComplete();
+//                }
 
                 if (mSwipeRefreshLayout != null) {
                     if (mSwipeRefreshLayout.isRefreshing()) {
@@ -185,9 +185,9 @@ public abstract class LoadListPresenter<T, M, V> extends BasePresenter<M, V> imp
                         mRecyclerView.setNoMore(true);
                     }
                 }
-                if (mRecyclerView.isRefreshing()) {
-                    mRecyclerView.refreshComplete();
-                }
+//                if (mRecyclerView.isRefreshing()) {
+//                    mRecyclerView.refreshComplete();
+//                }
                 if (mSwipeRefreshLayout != null) {
                     if (mSwipeRefreshLayout.isRefreshing()) {
                         mSwipeRefreshLayout.setRefreshing(false);
